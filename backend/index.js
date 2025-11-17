@@ -1,9 +1,14 @@
 import express from 'express'
 
-// create express ap
+import cors from 'cors'
+
+// create express app
 const app = express()
 
 const port = 8080
+
+//middleware
+app.use(cors())
 
 // add a get request to our base URL of our API
 app.get('/', (req, res) => {
