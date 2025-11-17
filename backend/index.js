@@ -1,6 +1,8 @@
 import express from 'express'
 
 import cors from 'cors'
+import 'dotenv/config'
+import connectDB from './db.js'
 
 // create express app
 const app = express()
@@ -19,5 +21,6 @@ app.get('/', (req, res) => {
 // when it makes a successful connection, run the callback function
 app.listen(port, () => {
     console.log('Listening on port: ' + port)
+    connectDB()
 }) 
 
