@@ -4,6 +4,8 @@ import cors from 'cors'
 import 'dotenv/config'
 import connectDB from './db.js'
 
+import Task from './models/Task.js'
+
 // create express app
 const app = express()
 
@@ -15,6 +17,16 @@ app.use(cors())
 // add a get request to our base URL of our API
 app.get('/', (req, res) => {
     res.json('Hello! (from server)')
+})
+
+app.get('/tasks', async (req, res) => {
+    try {
+    const tasks = await Task.find({})
+    res.status(200).json(tasks)
+    } catch (e) {
+        console.log(e.message)
+        res.status(400).json({ error: e.message })
+    }
 })
 
 // listen on a particular port
