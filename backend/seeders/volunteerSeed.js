@@ -1,32 +1,32 @@
-import Volunteer from "../models/Volunteer";
+import Volunteer from "../models/Volunteer.js";
 
 const volunteers = [
     {
         name: "John Plumber",
         email: "jplumber@email.com",
         skills: [
-            "plumbing",
-            "HVAC",
-            "electrical",
-            "general cleaning"
+            {text: "plumbing"},
+            {text: "HVAC"},
+            {text: "electrical"},
+            {text: "general cleaning"}
         ]
     },
         {
         name: "Missy Painter",
         email: "mpainter@email.com",
         skills: [
-            "painting",
-            "landscaping",
-            "general cleaning"
+            {text: "painting"},
+            {text: "landscaping"},
+            {text: "general cleaning"}
         ]
     },
             {
         name: "Mike Carpenter",
         email: "mcarpenter@email.com",
         skills: [
-            "carpentry",
-            "roofing",
-            "general cleaning"
+            {text: "carpentry"},
+            {text: "roofing"},
+            {text: "general cleaning"}
         ]
     },
 ]

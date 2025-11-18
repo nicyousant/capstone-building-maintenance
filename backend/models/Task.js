@@ -1,9 +1,14 @@
 import mongoose from "mongoose";
 
-const taskSchema = mongoose.Schema({
+const taskSchema = new mongoose.Schema({
     imgURL: { type: String },
     title: { type: String, required: true},
-    instructions: [ { body: String, required: true } ],
+    instructions: [ 
+        { 
+
+            text: { type: String, required: true } 
+        }
+],
     lastCompleted: { type: Date },
     dueDate: { type: Date },
     frequency: { type: String, required: true}

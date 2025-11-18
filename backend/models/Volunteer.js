@@ -1,9 +1,13 @@
 import mongoose from "mongoose";
 
-const volunteerSchema = mongoose.Schema({
+const volunteerSchema = new mongoose.Schema({
     name: { type: String, required: true },
     email: { type: String, required: true },
-    skills: [ { body: String, required: true } ],
+    skills: [ 
+        { 
+            text: { type: String, required: true }
+         }
+        ],
 })
 
 // first argument is the name of the model

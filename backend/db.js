@@ -1,4 +1,7 @@
 import mongoose from 'mongoose'
+import "dotenv/config";
+
+const db = await mongoose.connect(process.env.MONGO_URL)
 
 async function connectDB() {
     try {
@@ -9,4 +12,4 @@ async function connectDB() {
     }
 } 
 
-export default connectDB
+export { db, connectDB }
