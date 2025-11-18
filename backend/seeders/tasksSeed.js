@@ -1,3 +1,5 @@
+import Task from "../models/Task";
+
 const tasks = [
     {
         imgURL: "fall.jpg",
@@ -64,3 +66,19 @@ const tasks = [
         frequency: "6 Months",
     },
 ]
+
+
+async function seedTasks() {
+    try{
+        console.log("seeding task data");
+        const resultDelete = await Task.deleteMany({})
+        const resultInsert = await Task.insertMany(tasks)
+        console.log(resultDelete)
+        console.log(resultInsert)
+        console.log("Tasks successfully seeded!")
+    } catch (e) {
+        console.log(e);
+    } 
+}
+
+export { tasks, seedTasks }
