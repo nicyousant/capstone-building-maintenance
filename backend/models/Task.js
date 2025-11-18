@@ -1,8 +1,12 @@
 import mongoose from "mongoose";
 
 const taskSchema = mongoose.Schema({
-    text: { type: String, required: true},
-    completed: { type: Boolean, default: false }
+    imgURL: { type: String },
+    title: { type: String, required: true},
+    instructions: [ { body: String, required: true } ],
+    lastCompleted: { type: Date },
+    dueDate: { type: Date },
+    frequency: { type: String, required: true}
 })
 
 // first argument is the name of the model
