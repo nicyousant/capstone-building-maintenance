@@ -6,6 +6,7 @@ import { connectDB } from './db.js'
 
 
 import taskRoutes from './routes/tasksroute.js'
+import volunteerRoutes from './routes/volunteerroute.js'
 
 // create express app
 const app = express()
@@ -18,6 +19,7 @@ app.use(express.json())
 app.use(cors())
 
 app.use('/tasks', taskRoutes)
+app.use('/volunteers', volunteerRoutes)
 
 // add a get request to our base URL of our API
 app.get('/', (req, res) => {
