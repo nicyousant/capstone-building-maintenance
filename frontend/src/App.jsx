@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import DisplayTasks from './components/DisplayTasks'
 import { useTaskStore } from './store/useTaskStore';
+import DisplayVolunteers from './components/DisplayVolunteers';
+
 
 function App() {
 
@@ -26,6 +28,7 @@ function App() {
     <>
       <h1>Building Maintenance</h1>
       <DisplayTasks />
+      <DisplayVolunteers />
     </>
   )
 }

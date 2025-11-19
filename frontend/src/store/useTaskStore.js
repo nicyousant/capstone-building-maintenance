@@ -2,11 +2,11 @@ import { create } from 'zustand'
 
 export const useTaskStore = create((set) => ({
     tasks: [],
-    loading: false,
+    loadingTasks: false,
     error: null,
 
     fetchTasks: async () => {
-        set({ loading: true, error: null});
+        set({ loadingTasks: true, error: null});
     
         try {
             const res = await fetch('http://localhost:8080/tasks');
@@ -14,9 +14,28 @@ export const useTaskStore = create((set) => ({
 
             const data = await res.json();
 
-            set({ tasks: data, loading: false });
+            set({ tasks: data, loadingTasks: false });
         } catch (e) {
             set({ error: e.message, loading: false });
+        }
+    },
+
+    volunteers: [],
+    loadingVolunteers: false,
+    error: null,
+
+    fetchVolunteers: async () => {
+        set({ loadingVolunteers: true, error: null});
+    
+        try {
+            const res = await fetch('http://localhost:8080/volunteers');
+            if (!res.ok) throw new Error("Failed to fetch volunteers");
+
+            const data = await res.json();
+
+            set({ volunteers: data, loadingVolunteers: false });
+        } catch (e) {
+            set({ error: e.message, loadingVolunteers: false });
         }
     },
 })) 
