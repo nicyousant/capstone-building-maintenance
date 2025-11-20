@@ -23,8 +23,9 @@ export default function DisplayTasks() {
                 <div key={task._id} className="taskCard">
                     <p><img src={task.imgURL} className="taskImage"/></p>
                     <p>{task.title}</p>
-                    <p>{task.frequency}</p>
-                    <p>{task.lastCompleted}</p>
+                    <p><strong>Frequency:</strong> {task.frequency}</p>
+                    <p><strong>Last Completed:</strong> {task.lastCompleted ? new Date(task.lastCompleted).toLocaleDateString("en-US", { month: "2-digit", day: "2-digit", year: "numeric" }) : "-"}</p>
+                    <p><strong>Due Date:</strong> {task.dueDate ? new Date(task.dueDate).toLocaleDateString("en-US", { month: "2-digit", day: "2-digit", year: "numeric" }) : "-"}</p>
                 </div>
             ))}
         </div>

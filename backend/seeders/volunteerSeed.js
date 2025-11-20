@@ -4,6 +4,7 @@ const volunteers = [
     {
         name: "John Plumber",
         email: "jplumber@email.com",
+        phone: "724-111-1111",
         skills: [
             {text: "plumbing"},
             {text: "HVAC"},
@@ -14,6 +15,7 @@ const volunteers = [
         {
         name: "Missy Painter",
         email: "mpainter@email.com",
+        phone: "724-111-2222",
         skills: [
             {text: "painting"},
             {text: "landscaping"},
@@ -23,6 +25,7 @@ const volunteers = [
             {
         name: "Mike Carpenter",
         email: "mcarpenter@email.com",
+        phone: "412-111-3333",
         skills: [
             {text: "carpentry"},
             {text: "roofing"},

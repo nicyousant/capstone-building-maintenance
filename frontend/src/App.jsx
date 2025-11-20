@@ -1,7 +1,12 @@
 import { useEffect } from 'react'
-import DisplayTasks from './components/DisplayTasks'
 import { useTaskStore } from './store/useTaskStore';
+ 
+import { Routes, Route, Navigate} from "react-router";
+import DisplayTasks from './components/DisplayTasks'
 import DisplayVolunteers from './components/DisplayVolunteers';
+import AddNewTask from './pages/AddNewTask';
+import NavBar from './components/NavBar';
+import AddNewVolunteer from './pages/AddNewVolunteer';
 
 
 function App() {
@@ -26,9 +31,27 @@ function App() {
 
   return (
     <>
+    <NavBar />
       <h1>Building Maintenance</h1>
-      <DisplayTasks />
-      <DisplayVolunteers />
+      {/* <DisplayTasks />
+      <DisplayVolunteers /> */}
+
+        <Routes>
+
+                {/* Within the element, you render html or another component */}
+                
+              <Route path="/tasks" element={<div className="container"><h1>Display All Tasks</h1><DisplayTasks /></div>} />
+
+                              <Route path="/volunteers" element={<div className="container"><h1>Display All Volunteers</h1><DisplayVolunteers /></div>} />
+
+              <Route path="/addtask" element={<div className="container"><h1>Add New Task</h1><AddNewTask /></div>} />
+
+                            <Route path="/addvolunteer" element={<div className="container"><h1>Add New Volunteer</h1><AddNewVolunteer /></div>} />
+
+                         
+              <Route path="*" element={<Navigate to='/' />} />
+            </Routes>
+      
     </>
   )
 }

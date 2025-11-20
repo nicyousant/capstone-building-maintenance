@@ -13,7 +13,7 @@ export default function DisplayVolunteers() {
 
     return (
         <div>
-            <h2>Volunteers</h2>
+    
         <div className="displayCards">
        
 
@@ -24,7 +24,8 @@ export default function DisplayVolunteers() {
                     {/* <p><img src={task.imgURL} className="taskImage"/></p> */}
                     <p><strong>Name:</strong> {volunteer.name}</p>
                     <p><strong>Email:</strong> {volunteer.email}</p>
-                   
+                   <p><strong>Phone:</strong> {volunteer.phone}</p>
+
                     <p className="skills">
                             <strong>Skills:</strong>{" "}
                             {volunteer.skills && volunteer.skills.length > 0 
