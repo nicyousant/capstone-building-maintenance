@@ -10,6 +10,6 @@ router.post('/', volunteerController.createVolunteer)
 
 router.delete('/:id', volunteerController.deleteVolunteer)
 
-// router.put('/:id', volunteerController.updateVolunteer)
+router.put('/:id', volunteerController.updateVolunteer)
 
 export default router

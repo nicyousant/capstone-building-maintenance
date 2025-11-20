@@ -34,20 +34,21 @@ const deleteTask = async (req, res) => {
     }
 }
 
-// const updateTask = async (req, res) => {
-//     try {
-//         const todo = await Task.findById(req.params.id)
-//         todo.completed = !todo.completed
-//         await todo.save()
-//         res.status(200).json(todo)
-//     } catch(e) {
-//         console.log(e)
-//         res.status(400).json({ error: e.message })
-//     }
-// }
+const updateTask = async (req, res) => {
+  try {
+    const updated = await Task.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    res.status(200).json(updated);
+  } catch (e) {
+    console.log(e);
+    res.status(400).json({ error: e.message });
+  }
+};
 
 export default {
     createTask,
     getTasks,
-    deleteTask
+    deleteTask, 
+    updateTask
 }

@@ -10,6 +10,6 @@ router.post('/', taskController.createTask)
 
 router.delete('/:id', taskController.deleteTask)
 
-// router.put('/:id', todoController.updateTodo)
+router.put('/:id', taskController.updateTask)
 
 export default router

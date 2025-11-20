@@ -52,6 +52,8 @@ export default function AddNewVolunteer() {
   }
 
   return (
+<>
+    <h2>Add New Volunteer</h2>
     <form onSubmit={handleSubmit}>
 
 
@@ -119,5 +121,6 @@ export default function AddNewVolunteer() {
 
       <button type="submit">Add Volunteer</button>
     </form>
+    </>
   );
 }

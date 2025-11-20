@@ -2,142 +2,115 @@ import { useState } from "react";
 import { useTaskStore } from "../store/useTaskStore.js";
 
 export default function AddNewTask() {
-  const addTask = useTaskStore((s) => s.addTask);
-
-  const [imgURL, setImgURL] = useState("");
+  const { addTask } = useTaskStore(); // Zustand action
   const [title, setTitle] = useState("");
   const [frequency, setFrequency] = useState("");
-  const [dueDate, setDueDate] = useState("");
-  const [lastCompleted, setLastCompleted] = useState("");
+  const [lastCompleted, setLastCompleted] = useState(""); // YYYY-MM-DD
+  const [dueDate, setDueDate] = useState(""); // YYYY-MM-DD
+  const [instructions, setInstructions] = useState([""]); // array of steps
+  const [error, setError] = useState(null);
 
-  const [instructions, setInstructions] = useState([{ text: "" }]);
-
-  function handleStepChange(index, value) {
-    const updated = [...instructions];
-    updated[index].text = value;
-    setInstructions(updated);
-  }
-
+  // Add new instruction step
   function addStep() {
-    // prevent adding a new step until the last one is filled
-    if (instructions[instructions.length - 1].text.trim() === "") return;
-    setInstructions([...instructions, { text: "" }]);
+    setInstructions([...instructions, ""]);
   }
 
-  function removeStep(index) {
-    const updated = instructions.filter((_, i) => i !== index);
-    setInstructions(updated);
+  // Update instruction text
+  function handleStepChange(index, value) {
+    const newInstructions = [...instructions];
+    newInstructions[index] = value;
+    setInstructions(newInstructions);
   }
 
   async function handleSubmit(e) {
     e.preventDefault();
 
-    // Filter out any empty steps (don’t send blank instruction objects)
-    const cleanedSteps = instructions.filter((step) => step.text.trim() !== "");
+    try {
+      const newTask = {
+        title,
+        frequency,
+        lastCompleted: lastCompleted ? new Date(lastCompleted) : null,
+        dueDate: dueDate ? new Date(dueDate) : null,
+        instructions: instructions
+          .filter((text) => text.trim() !== "")
+          .map((text) => ({ text })),
+      };
 
-    const newTask = {
-      imgURL,
-      title,
-      frequency,
-      dueDate: dueDate || null,
-      lastCompleted: lastCompleted || null,
-      instructions: cleanedSteps,
-    };
+      await addTask(newTask);
 
-    await addTask(newTask);
-
-    // OPTIONAL: reset form after submit
-    setImgURL("");
-    setTitle("");
-    setFrequency("");
-    setDueDate("");
-    setLastCompleted("");
-    setInstructions([{ text: "" }]);
+      // Clear form
+      setTitle("");
+      setFrequency("");
+      setLastCompleted("");
+      setDueDate("");
+      setInstructions([""]);
+      setError(null);
+    } catch (err) {
+      setError(err.message);
+    }
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-
-
-
-      <label>Image URL:</label>
-      <input
-        type="text"
-        value={imgURL}
-        onChange={(e) => setImgURL(e.target.value)}
-      />
-
-
-      <label>Title:</label>
-      <input
-        type="text"
-        required
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-
-
-      <label>Frequency:</label>
-      <input
-        type="text"
-        required
-        value={frequency}
-        onChange={(e) => setFrequency(e.target.value)}
-      />
-
-
-      <label>Due Date:</label>
-      <input
-        type="date"
-        value={dueDate}
-        onChange={(e) => setDueDate(e.target.value)}
-      />
-
-
-      <label>Last Completed:</label>
-      <input
-        type="date"
-        value={lastCompleted}
-        onChange={(e) => setLastCompleted(e.target.value)}
-      />
-
-
-      <h3>Instructions</h3>
-      {instructions.map((step, index) => (
-        <div key={index} style={{ display: "flex", marginBottom: "5px" }}>
+    <div>
+      <h2>Add New Task</h2>
+      {error && <p style={{ color: "red" }}>{error}</p>}
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>Title:</label>
           <input
             type="text"
-            placeholder={`Step ${index + 1}`}
-            value={step.text}
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
             required
-            onChange={(e) => handleStepChange(index, e.target.value)}
           />
-
-          {/* show remove button except on step 1 */}
-          {instructions.length > 1 && (
-            <button
-              type="button"
-              onClick={() => removeStep(index)}
-              style={{ marginLeft: "5px" }}
-            >
-              ✕
-            </button>
-          )}
         </div>
-      ))}
 
-      {/* Add step */}
-      <button
-        type="button"
-        onClick={addStep}
-        disabled={instructions[instructions.length - 1].text.trim() === ""}
-      >
-        Add Step
-      </button>
+        <div>
+          <label>Frequency:</label>
+          <input
+            type="text"
+            value={frequency}
+            onChange={(e) => setFrequency(e.target.value)}
+            required
+          />
+        </div>
 
-      <br /><br />
+        <div>
+          <label>Last Completed:</label>
+          <input
+            type="date"
+            value={lastCompleted}
+            onChange={(e) => setLastCompleted(e.target.value)}
+          />
+        </div>
 
-      <button type="submit">Create Task</button>
-    </form>
+        <div>
+          <label>Due Date:</label>
+          <input
+            type="date"
+            value={dueDate}
+            onChange={(e) => setDueDate(e.target.value)}
+          />
+        </div>
+
+        <div>
+          <label>Instructions:</label>
+          {instructions.map((step, i) => (
+            <input
+              key={i}
+              type="text"
+              value={step}
+              onChange={(e) => handleStepChange(i, e.target.value)}
+              required
+            />
+          ))}
+          <button type="button" onClick={addStep}>
+            Add Step
+          </button>
+        </div>
+
+        <button type="submit">Save Task</button>
+      </form>
+    </div>
   );
 }

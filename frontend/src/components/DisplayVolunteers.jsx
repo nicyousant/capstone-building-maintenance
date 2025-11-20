@@ -2,18 +2,18 @@ import { useEffect } from 'react';
 import { useTaskStore } from '../store/useTaskStore';
 
 export default function DisplayVolunteers() {
-    const { volunteers, loadingVolunteers, error, fetchVolunteers } = useTaskStore();
+    const { volunteers, loadingVolunteers, volunteerError, fetchVolunteers } = useTaskStore();
 
     useEffect(() => {
         fetchVolunteers();
     }, [fetchVolunteers]);
 
     if (loadingVolunteers) return <p>Loading volunteers...</p>;
-    if (error) return <p>Error: {error}</p>;
+    if (volunteerError) return <p>Error: {volunteerError}</p>;
 
     return (
         <div>
-    
+        <h2>Display All Volunteers</h2>
         <div className="displayCards">
        
 

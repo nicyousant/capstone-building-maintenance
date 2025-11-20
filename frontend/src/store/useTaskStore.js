@@ -9,6 +9,11 @@ export const useTaskStore = create((set, get) => ({
   loadingVolunteers: false,
   volunteerError: null,
 
+  // --- GET SINGLE TASK ---
+  getTaskById: (id) => {
+    return get().tasks.find((t) => t._id === id);
+  },
+
   // --- FETCH TASKS ---
   fetchTasks: async () => {
     set({ loadingTasks: true, taskError: null });
@@ -22,22 +27,6 @@ export const useTaskStore = create((set, get) => ({
 
     } catch (e) {
       set({ taskError: e.message, loadingTasks: false });
-    }
-  },
-
-  // --- FETCH VOLUNTEERS ---
-  fetchVolunteers: async () => {
-    set({ loadingVolunteers: true, volunteerError: null });
-
-    try {
-      const res = await fetch("http://localhost:8080/volunteers");
-      if (!res.ok) throw new Error("Failed to fetch volunteers");
-
-      const data = await res.json();
-      set({ volunteers: data, loadingVolunteers: false });
-
-    } catch (e) {
-      set({ volunteerError: e.message, loadingVolunteers: false });
     }
   },
 
@@ -61,8 +50,50 @@ export const useTaskStore = create((set, get) => ({
     }
   },
 
-  // --- ADD NEW VOLUNTEER ---
-    addVolunteer: async (volunteer) => {
+  // --- UPDATE TASK  ---
+ updateTask: async (updatedTask) => {
+  try {
+    if (!updatedTask._id) throw new Error("Task ID missing");
+
+    const res = await fetch(`http://localhost:8080/tasks/${updatedTask._id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updatedTask),
+    });
+
+    if (!res.ok) throw new Error("Failed to update task");
+
+    const data = await res.json();
+
+    // Update the task in the Zustand store
+    set({
+      tasks: get().tasks.map((t) => (t._id === data._id ? data : t)),
+    });
+  } catch (e) {
+    set({ taskError: e.message });
+  }
+},
+
+  // --- DELETE TASK ---
+  deleteTask: async (id) => {
+    try {
+      const res = await fetch(`http://localhost:8080/tasks/${id}`, {
+        method: "DELETE",
+      });
+
+      if (!res.ok) throw new Error("Failed to delete task");
+
+      set({
+        tasks: get().tasks.filter((t) => t._id !== id),
+      });
+
+    } catch (e) {
+      set({ error: e.message });
+    }
+  },
+
+  // --- ADD VOLUNTEER ---
+  addVolunteer: async (volunteer) => {
     try {
       const res = await fetch("http://localhost:8080/volunteers", {
         method: "POST",
@@ -80,4 +111,20 @@ export const useTaskStore = create((set, get) => ({
       set({ volunteerError: e.message });
     }
   },
+
+  // --- FETCH VOLUNTEERS ---
+  fetchVolunteers: async () => {
+    set({ loadingVolunteers: true, volunteerError: null });
+
+    try {
+      const res = await fetch("http://localhost:8080/volunteers");
+      if (!res.ok) throw new Error("Failed to fetch volunteers");
+
+      const data = await res.json();
+      set({ volunteers: data, loadingVolunteers: false });
+
+    } catch (e) {
+      set({ volunteerError: e.message, loadingVolunteers: false });
+    }
+  }
 }));

@@ -36,20 +36,21 @@ const deleteVolunteer = async (req, res) => {
     }
 }
 
-// const updateVolunteer = async (req, res) => {
-//     try {
-//         const todo = await Volunteer.findById(req.params.id)
-//         todo.completed = !todo.completed
-//         await todo.save()
-//         res.status(200).json(todo)
-//     } catch(e) {
-//         console.log(e)
-//         res.status(400).json({ error: e.message })
-//     }
-// }
+const updateVolunteer = async (req, res) => {
+  try {
+    const updated = await Volunteer.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    res.status(200).json(updated);
+  } catch (e) {
+    console.log(e);
+    res.status(400).json({ error: e.message });
+  }
+};
 
 export default {
     createVolunteer,
     getVolunteers,
-    deleteVolunteer
+    deleteVolunteer,
+    updateVolunteer
 }

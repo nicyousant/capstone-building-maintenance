@@ -1,59 +1,79 @@
-import { useEffect } from 'react'
-import { useTaskStore } from './store/useTaskStore';
- 
-import { Routes, Route, Navigate} from "react-router";
-import DisplayTasks from './components/DisplayTasks'
-import DisplayVolunteers from './components/DisplayVolunteers';
-import AddNewTask from './pages/AddNewTask';
-import NavBar from './components/NavBar';
-import AddNewVolunteer from './pages/AddNewVolunteer';
+import { useEffect } from "react";
+import { useTaskStore } from "./store/useTaskStore";
+import { Routes, Route, Navigate } from "react-router-dom";
 
+import NavBar from "./components/NavBar";
+import DisplayTasks from "./components/DisplayTasks";
+import DisplayVolunteers from "./components/DisplayVolunteers";
+import AddNewTask from "./pages/AddNewTask";
+import AddNewVolunteer from "./pages/AddNewVolunteer";
+import TaskDetails from "./pages/TaskDetails";
+import EditTask from "./pages/EditTask";
 
 function App() {
-
-  // use useEffect to make a request to our API
-  // array is dependency list. Leave empty since we only want it to run one time. 
-  // use fetch to make the request
-  // useEffect(() => {
-  //   async function getTasks() {
-  //     const response = await fetch('http://localhost:8080/tasks') 
-  //     const result = await response.json()
-  //     console.log(result)
-  //   }
-  //   getTasks()
-  // }, [] )
-
   const fetchTasks = useTaskStore((state) => state.fetchTasks);
 
   useEffect(() => {
-    fetchTasks(); // Load tasks from Zustand store
+    fetchTasks();
   }, [fetchTasks]);
 
   return (
     <>
-    <NavBar />
+      <NavBar />
       <h1>Building Maintenance</h1>
-      {/* <DisplayTasks />
-      <DisplayVolunteers /> */}
 
-        <Routes>
+      <Routes>
+        {/* Display all tasks */}
+        <Route
+          path="/tasks"
+          element={
+            <div className="container">
+              <DisplayTasks />
+            </div>
+          }
+        />
 
-                {/* Within the element, you render html or another component */}
-                
-              <Route path="/tasks" element={<div className="container"><h1>Display All Tasks</h1><DisplayTasks /></div>} />
+        {/* Task details (view-only) */}
+        <Route path="/tasks/:id" element={<TaskDetails />} />
 
-                              <Route path="/volunteers" element={<div className="container"><h1>Display All Volunteers</h1><DisplayVolunteers /></div>} />
+        {/* Edit task */}
+        <Route path="/tasks/:id/edit" element={<EditTask />} />
 
-              <Route path="/addtask" element={<div className="container"><h1>Add New Task</h1><AddNewTask /></div>} />
+        {/* Volunteers */}
+        <Route
+          path="/volunteers"
+          element={
+            <div className="container">
+              <DisplayVolunteers />
+            </div>
+          }
+        />
 
-                            <Route path="/addvolunteer" element={<div className="container"><h1>Add New Volunteer</h1><AddNewVolunteer /></div>} />
+        {/* Add new task */}
+        <Route
+          path="/addtask"
+          element={
+            <div className="container">
+              <AddNewTask />
+            </div>
+          }
+        />
 
-                         
-              <Route path="*" element={<Navigate to='/' />} />
-            </Routes>
-      
+        {/* Add new volunteer */}
+        <Route
+          path="/addvolunteer"
+          element={
+            <div className="container">
+              <AddNewVolunteer />
+            </div>
+          }
+        />
+
+        {/* Redirect unknown routes */}
+        <Route path="*" element={<Navigate to="/tasks" />} />
+      </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
