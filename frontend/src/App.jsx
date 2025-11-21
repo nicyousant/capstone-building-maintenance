@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useTaskStore } from "./store/useTaskStore";
 import { Routes, Route, Navigate } from "react-router-dom";
-
 import NavBar from "./components/NavBar";
 import DisplayTasks from "./pages/DisplayTasks";
 import DisplayVolunteers from "./pages/DisplayVolunteers";

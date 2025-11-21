@@ -66,6 +66,46 @@ const tasks = [
         dueDate: "5/6/2026",
         frequency: "6 Months",
     },
+    {
+        imgURL: "fence.jpg",
+        title: "Fences & Gates",
+        instructions: [ 
+                {text: "Inspect the condition and operation of the manual gate hinges and latches to ensure they are secure and check for rust."},
+                {text: "Verify that the gate lock, locking mechanism, latches, and/or hinges are functioning and lubricated properly."}, 
+                {text: "Confirm that warning signs have been posted on each side of the gate. To prevent injury to passerby, a gate should open toward the property's interior in most cases."},
+                {text: "Inspect the condition of the rollers. Guarding should be installed on exposed rollers."},
+                {text: "Verify that the bump stop is in good condition. Stopping mechanisms should prevent the gate from falling over if it comes off the track."},
+                {text: "Inspect paint finish and touch up where needed with appropriate color, sheen and paint type."},
+                {text: "Inspect for holes, damage or rust on the fence and touch up as needed."},
+                {text: "Ensure that vegetation/trees are not growing on or through the fence."}
+        ],
+        lastCompleted: "11/6/2025",
+        dueDate: "11/6/2026",
+        frequency: "Yearly",
+    },
+
+       {
+        imgURL: "roof.jpg",
+        title: "Roof, Gutters, & Downspouts ",
+        instructions: [ 
+                {text: "Verify that the construction is still structurally strong."},
+                {text: "Verify that the wood is still in good condition."}, 
+                {text: "Verify that all bolts, hardware and metal parts, including steel posts are secure and free from rust."},
+                {text: "Inspect condition of the decking and roofing material."},
+                {text: "Inspect condition of the paint finish and touch up if needed."},
+                {text: "Clear any debris on the roof."},
+                {text: "Inspect the condition of all caulking."},
+                {text: "Inspect for missing or damaged shingles."},
+                {text: "Inspect condition of ridge cap looking for signs of rust or corrosion in the roof flashing and on nail heads."},
+                {text: "Verify that roof vents are not blocked."},
+                {text: "Inspect condition of tar and sealant at all joints and roof penetrations."},
+                {text: "Clean the roof to remove corrosive deposits by hosing down with water using neutral detergents."},
+                {text: "Verify that gutters and downspouts are clean and free of rust, debris, damage or leaks."},
+        ],
+        lastCompleted: "11/6/2025",
+        dueDate: "11/6/2026",
+        frequency: "Yearly",
+    },
 ]
 
 

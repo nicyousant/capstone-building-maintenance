@@ -61,6 +61,8 @@ h3 {
 
 .displayCards {
   font-family: Lato;
+  display:flex;
+  flex-wrap: wrap;
 }
 
 .taskCard {

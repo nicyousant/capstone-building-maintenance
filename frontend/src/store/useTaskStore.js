@@ -14,6 +14,7 @@ export const useTaskStore = create((set, get) => ({
     return get().tasks.find((t) => t._id === id);
   },
 
+  // --- GET SINGLE VOLUNTEER ---
     getVolunteerById: (id) => {
     return get().volunteers.find((v) => v._id === id);
   },
