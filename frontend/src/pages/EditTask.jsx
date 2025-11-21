@@ -69,18 +69,18 @@ export default function EditTask() {
       <h2>Edit Task</h2>
       {error && <p style={{ color: "red" }}>{error}</p>}
 
-      <form onSubmit={handleSave}>
-        <label>Title:</label>
-        <input value={title} onChange={(e) => setTitle(e.target.value)} required />
+      <form onSubmit={handleSave} className="editTask">
+        <p><label>Title:</label>
+        <input value={title} onChange={(e) => setTitle(e.target.value)} required /></p>
 
-        <label>Frequency:</label>
-        <input value={frequency} onChange={(e) => setFrequency(e.target.value)} required />
+        <p><label>Frequency:</label>
+        <input value={frequency} onChange={(e) => setFrequency(e.target.value)} required /></p>
 
-        <label>Last Completed:</label>
-        <input type="date" value={lastCompleted} onChange={(e) => setLastCompleted(e.target.value)} />
+        <p><label>Last Completed:</label>
+        <input type="date" value={lastCompleted} onChange={(e) => setLastCompleted(e.target.value)} /></p>
 
-        <label>Due Date:</label>
-        <input type="date" value={dueDate} onChange={(e) => setDueDate(e.target.value)} />
+        <p><label>Due Date:</label>
+        <input type="date" value={dueDate} onChange={(e) => setDueDate(e.target.value)} /></p>
 
         <label>Image URL:</label>
         <input value={imgURL} onChange={(e) => setImgURL(e.target.value)} />
@@ -88,7 +88,7 @@ export default function EditTask() {
         <h3>Instructions</h3>
         {instructions.map((inst, i) => (
           <div key={i} style={{ display: "flex", marginBottom: "5px" }}>
-            <input type="text" value={inst} onChange={(e) => handleInstructionChange(i, e.target.value)} />
+            <input type="textarea" value={inst} onChange={(e) => handleInstructionChange(i, e.target.value)} className="instructionsInput"/>
             <button type="button" onClick={() => removeInstruction(i)}>✕</button>
           </div>
         ))}

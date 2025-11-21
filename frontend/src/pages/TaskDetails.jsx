@@ -22,9 +22,9 @@ export default function TaskDetails() {
 <p><strong>Due Date:</strong> {task.dueDate ? new Date(task.dueDate).toLocaleDateString("en-US", { month: "2-digit", day: "2-digit", year: "numeric" }) : "-"}</p>
         <h3>Instructions:</h3>
         {task.instructions.length > 0 ? (
-          <ul>
+          <ul >
             {task.instructions.map((inst, i) => (
-              <li key={i}>{inst.text}</li>
+              <li key={i} className="instructions">{inst.text}</li>
             ))}
           </ul>
         ) : (
