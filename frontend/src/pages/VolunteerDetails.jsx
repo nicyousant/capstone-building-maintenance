@@ -4,11 +4,22 @@ import { useParams, useNavigate } from "react-router-dom";
 export default function VolunteerDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { volunteers } = useTaskStore();
+  const { volunteers, deleteVolunteer } = useTaskStore();
 
   const volunteer = volunteers.find((v) => v._id === id);
 
   if (!volunteer) return <p>Volunteer not found.</p>;
+
+    async function handleDelete() {
+    if (window.confirm("Are you sure you want to delete this volunteer?")) {
+      try {
+        await deleteVolunteer(volunteer._id);
+        navigate("/volunteers"); // navigate back to volunteer list
+      } catch (e) {
+        console.error(e.message);
+      }
+    }
+}
 
   return (
     <div>
@@ -38,6 +49,15 @@ export default function VolunteerDetails() {
       >
         Edit Volunteer
       </button>
+
+            <button
+        style={{ marginTop: "20px", marginLeft: "10px"}}
+        onClick={handleDelete}
+      >
+       <img src="/delete_bl.svg" style={{width: "12px"}}/> Delete Volunteer
+      </button>
     </div>
+
+    
   );
 }

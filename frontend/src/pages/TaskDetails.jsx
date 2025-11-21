@@ -4,11 +4,22 @@ import { useParams, useNavigate } from "react-router-dom";
 export default function TaskDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { tasks } = useTaskStore();
+  const { tasks, deleteTask } = useTaskStore();
 
   const task = tasks.find((t) => t._id === id);
 
   if (!task) return <p>Task not found.</p>;
+
+  async function handleDelete() {
+    if (window.confirm("Are you sure you want to delete this task?")) {
+      try {
+        await deleteTask(task._id);
+        navigate("/tasks"); // navigate back to task list
+      } catch (e) {
+        console.error(e.message);
+      }
+    }
+  }
 
   return (
     <div>
@@ -37,6 +48,13 @@ export default function TaskDetails() {
         onClick={() => navigate(`/tasks/${task._id}/edit`)}
       >
         Edit Task
+      </button>
+
+      <button
+        style={{ marginTop: "20px", marginLeft: "10px"}}
+        onClick={handleDelete}
+      >
+       <img src="/delete_bl.svg" style={{width: "12px"}}/> Delete Task
       </button>
     </div>
   );

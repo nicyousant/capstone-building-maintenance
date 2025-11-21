@@ -158,4 +158,22 @@ export const useTaskStore = create((set, get) => ({
   }
 },
 
+  // --- DELETE TASK ---
+  deleteVolunteer: async (id) => {
+    try {
+      const res = await fetch(`http://localhost:8080/volunteers/${id}`, {
+        method: "DELETE",
+      });
+
+      if (!res.ok) throw new Error("Failed to delete volunteer");
+
+      set({
+        volunteers: get().volunteers.filter((v) => v._id !== id),
+      });
+
+    } catch (e) {
+      set({ error: e.message });
+    }
+  },
+
 }));
