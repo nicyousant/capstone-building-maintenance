@@ -1,8 +1,15 @@
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  /* padding: 2rem; */
   text-align: center;
+
+}
+
+body {
+   background-color: lightgray;
+   margin: 0;
+   padding-bottom: 50px;
 }
 
 .displayCards {
@@ -13,7 +20,16 @@
 .taskCard {
   border: 1px solid black;
   padding: 10px;
-  border-radius: 10px;;
+  border-radius: 10px;
+}
+
+.taskDetails {
+    border: 1px solid black;
+  padding: 10px;
+  border-radius: 10px;
+  width: 50%;
+  margin: 0 auto;
+  background-color: white;
 }
 
 .taskImage {
@@ -25,19 +41,25 @@
   list-style-type: none;
 }
 
+.navContainer {
+  background-color: black;
+  width: 100%;
+}
+
 .nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
   font-family: Montserrat;
   font-weight: bold;
+  height: 50px;
+  align-content: center;
   /* background-color: cyan; */
-
 }
 
 .nav a {
   text-decoration: none;
-    color: black;
+    color: white;
 }
 
 h1 {
@@ -60,6 +82,10 @@ h3 {
   padding: 10px 0 0 0;
 }
 
+p {
+    font-family: Lato;
+}
+
 .displayCards {
   font-family: Lato;
   display:flex;
@@ -68,11 +94,13 @@ h3 {
 
 .taskCard {
   font-family: Lato;
+  background-color: white;
 }
 
 .instructions {
   padding-bottom: 10px;
   text-align: left;
+  font-family: Lato;
 }
 
 .editTask {

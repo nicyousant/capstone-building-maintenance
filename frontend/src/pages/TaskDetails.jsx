@@ -25,7 +25,7 @@ export default function TaskDetails() {
     <div>
       <h2>Task Details</h2>
 
-      <div className="taskCard">
+      <div className="taskDetails">
         {task.imgURL && <p><img src={`/${task.imgURL}`} className="taskImage" alt={task.title} /></p>}
         <p><strong>Title:</strong> {task.title}</p>
         <p><strong>Frequency:</strong> {task.frequency}</p>
