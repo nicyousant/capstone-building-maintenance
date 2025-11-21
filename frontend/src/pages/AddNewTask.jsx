@@ -9,6 +9,7 @@ export default function AddNewTask() {
   const [dueDate, setDueDate] = useState(""); // YYYY-MM-DD
   const [instructions, setInstructions] = useState([""]); // array of steps
   const [error, setError] = useState(null);
+  const [imgURL, setImgURL] = useState("");
 
   // Add new instruction step
   function addStep() {
@@ -92,17 +93,27 @@ export default function AddNewTask() {
             onChange={(e) => setDueDate(e.target.value)}
           />
         </div>
+<div>
+        <label>
+  Image URL (optional):
+  <input
+    type="text"
+    value={imgURL}
+    onChange={(e) => setImgURL(e.target.value)}
+    placeholder="image.jpg"
+  />
+</label>
+</div>
 
-        <div>
-          <label>Instructions:</label>
+        <div className="addNewInstructions">
+          <h3>Instructions:</h3>
           {instructions.map((step, i) => (
-            <input
+            <div><textarea className="instructionsInput"
               key={i}
-              type="text"
               value={step}
               onChange={(e) => handleStepChange(i, e.target.value)}
               required
-            />
+            /></div>
           ))}
           <button type="button" onClick={addStep}>
             Add Step

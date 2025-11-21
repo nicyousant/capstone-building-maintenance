@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
 import { useTaskStore } from '../store/useTaskStore';
+import { Link } from "react-router";
+
 
 export default function DisplayVolunteers() {
     const { volunteers, loadingVolunteers, volunteerError, fetchVolunteers } = useTaskStore();
@@ -20,6 +22,7 @@ export default function DisplayVolunteers() {
             {volunteers.length === 0 && <p>No volunteers found.</p>}
 
             {volunteers.map((volunteer) => (
+                                <Link key={volunteer._id} to={`/volunteers/${volunteer._id}`} style={{ textDecoration: "none" }}>
                 <div key={volunteer._id} className="taskCard">
                     {/* <p><img src={task.imgURL} className="taskImage"/></p> */}
                     <p><strong>Name:</strong> {volunteer.name}</p>
@@ -36,6 +39,7 @@ export default function DisplayVolunteers() {
                             }
                         </p>
                 </div>
+                </Link>
             ))}
         </div>
         </div>

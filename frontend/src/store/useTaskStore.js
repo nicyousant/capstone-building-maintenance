@@ -14,6 +14,11 @@ export const useTaskStore = create((set, get) => ({
     return get().tasks.find((t) => t._id === id);
   },
 
+    getVolunteerById: (id) => {
+    return get().volunteers.find((v) => v._id === id);
+  },
+
+
   // --- FETCH TASKS ---
   fetchTasks: async () => {
     set({ loadingTasks: true, taskError: null });
@@ -126,5 +131,30 @@ export const useTaskStore = create((set, get) => ({
     } catch (e) {
       set({ volunteerError: e.message, loadingVolunteers: false });
     }
+  },
+
+    // --- UPDATE VOLUNTEER  ---
+ updateVolunteer: async (updatedVolunteer) => {
+  try {
+    if (!updatedVolunteer._id) throw new Error("Volunteer ID missing");
+
+    const res = await fetch(`http://localhost:8080/volunteers/${updatedVolunteer._id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updatedVolunteer),
+    });
+
+    if (!res.ok) throw new Error("Failed to update volunteer");
+
+    const data = await res.json();
+
+    // Update the volunteer in the Zustand store
+    set({
+      volunteers: get().volunteers.map((v) => (v._id === data._id ? data : v)),
+    });
+  } catch (e) {
+    set({ volunteerError: e.message });
   }
+},
+
 }));

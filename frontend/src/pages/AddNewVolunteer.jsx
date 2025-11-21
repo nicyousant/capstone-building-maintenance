@@ -54,7 +54,7 @@ export default function AddNewVolunteer() {
   return (
 <>
     <h2>Add New Volunteer</h2>
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="newVolunteerForm">  
 
 
 
@@ -66,7 +66,6 @@ export default function AddNewVolunteer() {
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
-
 
       <label>Phone:</label>
       <input

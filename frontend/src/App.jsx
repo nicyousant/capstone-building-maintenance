@@ -3,12 +3,14 @@ import { useTaskStore } from "./store/useTaskStore";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import NavBar from "./components/NavBar";
-import DisplayTasks from "./components/DisplayTasks";
-import DisplayVolunteers from "./components/DisplayVolunteers";
+import DisplayTasks from "./pages/DisplayTasks";
+import DisplayVolunteers from "./pages/DisplayVolunteers";
 import AddNewTask from "./pages/AddNewTask";
 import AddNewVolunteer from "./pages/AddNewVolunteer";
 import TaskDetails from "./pages/TaskDetails";
 import EditTask from "./pages/EditTask";
+import VolunteerDetails from "./pages/VolunteerDetails";
+import EditVolunteer from "./pages/EditVolunteer";
 
 function App() {
   const fetchTasks = useTaskStore((state) => state.fetchTasks);
@@ -40,14 +42,13 @@ function App() {
         <Route path="/tasks/:id/edit" element={<EditTask />} />
 
         {/* Volunteers */}
-        <Route
-          path="/volunteers"
-          element={
-            <div className="container">
-              <DisplayVolunteers />
-            </div>
-          }
-        />
+        <Route path="/volunteers" element={<div className="container">  <DisplayVolunteers /></div>}/>
+
+              {/* Volunteer details (view-only) */}
+        <Route path="/volunteers/:id" element={<VolunteerDetails />} />
+
+              {/* Edit volunteer */}
+        <Route path="/volunteers/:id/edit" element={<EditVolunteer />} />
 
         {/* Add new task */}
         <Route
