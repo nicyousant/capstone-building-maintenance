@@ -1,157 +1,138 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
 import { useTaskStore } from "../store/useTaskStore";
+import { useParams, useNavigate } from "react-router-dom";
+import Select from "react-select";
 
 export default function EditTask() {
-    const { id } = useParams();
-    const navigate = useNavigate();
-    const { tasks, updateTask } = useTaskStore();
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const { tasks, volunteers, updateTask } = useTaskStore();
 
-    const task = tasks.find((t) => t._id === id);
+  const task = tasks.find(t => t._id === id);
 
-    const [title, setTitle] = useState("");
-    const [frequency, setFrequency] = useState("");
-    const [lastCompleted, setLastCompleted] = useState("");
-    const [dueDate, setDueDate] = useState("");
-    const [instructions, setInstructions] = useState([]);
-    const [imgURL, setImgURL] = useState("");
-    const [error, setError] = useState(null);
+  // State for form fields
+  const [title, setTitle] = useState("");
+  const [frequency, setFrequency] = useState("");
+  const [lastCompleted, setLastCompleted] = useState("");
+  const [dueDate, setDueDate] = useState("");
+  const [instructions, setInstructions] = useState([]);
+  const [imgURL, setImgURL] = useState("");
+  const [leadVolunteer, setLeadVolunteer] = useState(null);
+  const [additionalVolunteers, setAdditionalVolunteers] = useState([]);
 
-    useEffect(() => {
-        if (task) {
-            setTitle(task.title || "");
-            setFrequency(task.frequency || "");
-            setLastCompleted(
-                task.lastCompleted ? task.lastCompleted.slice(0, 10) : ""
-            );
-            setDueDate(task.dueDate ? task.dueDate.slice(0, 10) : "");
-            setInstructions(task.instructions.map((i) => i.text) || []);
-            setImgURL(task.imgURL || "");
-        }
-    }, [task]);
+  // Initialize form when task & volunteers are loaded
+  useEffect(() => {
+    if (!task) return;
 
-    if (!task) return <p>Task not found.</p>;
+    setTitle(task.title);
+    setFrequency(task.frequency);
+    setLastCompleted(task.lastCompleted ? task.lastCompleted.slice(0,10) : "");
+    setDueDate(task.dueDate ? task.dueDate.slice(0,10) : "");
+    setInstructions(task.instructions.map(inst => inst.text));
+    setImgURL(task.imgURL || "");
 
-    function handleInstructionChange(index, value) {
-        const updated = [...instructions];
-        updated[index] = value;
-        setInstructions(updated);
-    }
+    const volunteerOptions = volunteers.map(v => ({ value: v._id, label: v.name }));
+    setLeadVolunteer(volunteerOptions.find(v => v.value === task.leadVolunteer) || null);
+    setAdditionalVolunteers(volunteerOptions.filter(v => task.additionalVolunteers.includes(v.value)));
+  }, [task, volunteers]);
 
-    function addInstruction() {
-        setInstructions([...instructions, ""]);
-    }
+  function handleInstructionChange(index, value) {
+    const newInstructions = [...instructions];
+    newInstructions[index] = value;
+    setInstructions(newInstructions);
+  }
 
-    function removeInstruction(index) {
-        setInstructions(instructions.filter((_, i) => i !== index));
-    }
+  function addInstruction() {
+    setInstructions([...instructions, ""]);
+  }
 
-    async function handleSave(e) {
-        e.preventDefault();
-        try {
-            const updated = {
-                _id: task._id, // essential
-                title,
-                frequency,
-                lastCompleted: lastCompleted || null,
-                dueDate: dueDate || null,
-                instructions: instructions
-                    .filter((text) => text.trim() !== "")
-                    .map((text) => ({ text })),
-                imgURL,
-            };
+  function removeInstruction(index) {
+    setInstructions(instructions.filter((_, i) => i !== index));
+  }
 
-            await updateTask(updated);
-            navigate(`/tasks/${task._id}`); // back to task details
-        } catch (e) {
-            setError(e.message);
-        }
-    }
+  async function handleSave(e) {
+    e.preventDefault();
+    if (!task) return;
 
-    return (
-        <div>
-            <h2>Edit Task</h2>
-            {error && <p style={{ color: "red" }}>{error}</p>}
+    const updated = {
+      ...task,
+      title,
+      frequency,
+      lastCompleted: lastCompleted || null,
+      dueDate: dueDate || null,
+      imgURL: imgURL || null,
+      instructions: instructions.filter(text => text.trim() !== "").map(text => ({ text })),
+      leadVolunteer: leadVolunteer ? leadVolunteer.value : null,
+      additionalVolunteers: additionalVolunteers.map(v => v.value),
+    };
 
-             {task.imgURL && <p><img src={`/${task.imgURL}`} className="taskImage" alt={task.title} /></p>}
+    await updateTask(updated);
+    navigate(`/tasks/${task._id}`);
+  }
 
-            <form onSubmit={handleSave} className="editTask">
-                <p>
-                    <label>Title:</label>
-                    <input
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
-                        required
-                    />
-                </p>
+  const volunteerOptions = volunteers.map(v => ({ value: v._id, label: v.name }));
 
-                <p>
-                    <label>Frequency:</label>
-                    <input
-                        value={frequency}
-                        onChange={(e) => setFrequency(e.target.value)}
-                        required
-                    />
-                </p>
+  return (
+    <div>
+      <h2>Edit Task</h2>
+      <form onSubmit={handleSave}>
+        <p>
+          <label>Title:</label>
+          <input value={title} onChange={e => setTitle(e.target.value)} required />
+        </p>
 
-                <p>
-                    <label>Last Completed:</label>
-                    <input
-                        type="date"
-                        value={lastCompleted}
-                        onChange={(e) => setLastCompleted(e.target.value)}
-                    />
-                </p>
+        <p>
+          <label>Frequency:</label>
+          <input value={frequency} onChange={e => setFrequency(e.target.value)} required />
+        </p>
 
-                <p>
-                    <label>Due Date:</label>
-                    <input
-                        type="date"
-                        value={dueDate}
-                        onChange={(e) => setDueDate(e.target.value)}
-                    />
-                </p>
+        <p>
+          <label>Last Completed:</label>
+          <input type="date" value={lastCompleted} onChange={e => setLastCompleted(e.target.value)} />
+        </p>
 
-                <label>Image URL:</label>
-                <input
-                    value={imgURL}
-                    onChange={(e) => setImgURL(e.target.value)}
-                />
+        <p>
+          <label>Due Date:</label>
+          <input type="date" value={dueDate} onChange={e => setDueDate(e.target.value)} />
+        </p>
 
-                <h3>Instructions</h3>
-                {instructions.map((inst, i) => (
-                    <div
-                        key={i}
-                        style={{ display: "flex", marginBottom: "5px" }}
-                    >
-                        <textarea
-                            className="instructionsInput"
-                            value={inst}
-                            onChange={(e) =>
-                                handleInstructionChange(i, e.target.value)
-                            }
-                            onInput={(e) => {
-                                e.target.style.height = "auto";
-                                e.target.style.height =
-                                    e.target.scrollHeight + "px";
-                            }}
-                        />
-                        <button
-                            type="button"
-                            onClick={() => removeInstruction(i)}
-                        >
-                            ✕
-                        </button>
-                    </div>
-                ))}
-                <button type="button" onClick={addInstruction}>
-                    Add Step
-                </button>
+        <p>
+          <label>Image URL:</label>
+          <input type="text" value={imgURL} onChange={e => setImgURL(e.target.value)} placeholder="image.jpg" />
+        </p>
 
-                <br />
-                <br />
-                <button type="submit">Save Changes</button>
-            </form>
-        </div>
-    );
+        <h3>Instructions:</h3>
+        {instructions.map((inst, i) => (
+          <div key={i} style={{ display: "flex", marginBottom: "5px" }}>
+            <textarea
+              className="instructionsInput"
+              value={inst}
+              onChange={e => handleInstructionChange(i, e.target.value)}
+            />
+            <button type="button" onClick={() => removeInstruction(i)}>✕</button>
+          </div>
+        ))}
+        <button type="button" onClick={addInstruction}>Add Step</button>
+
+        <h3>Lead Volunteer</h3>
+        <Select
+          options={volunteerOptions}
+          value={leadVolunteer}
+          onChange={setLeadVolunteer}
+          isClearable
+        />
+
+        <h3>Additional Volunteers</h3>
+        <Select
+          options={volunteerOptions}
+          value={additionalVolunteers}
+          onChange={setAdditionalVolunteers}
+          isMulti
+        />
+
+        <br /><br />
+        <button type="submit">Save Changes</button>
+      </form>
+    </div>
+  );
 }

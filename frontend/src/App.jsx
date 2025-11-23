@@ -10,6 +10,7 @@ import TaskDetails from "./pages/TaskDetails";
 import EditTask from "./pages/EditTask";
 import VolunteerDetails from "./pages/VolunteerDetails";
 import EditVolunteer from "./pages/EditVolunteer";
+import Schedule from "./pages/Schedule";
 
 function App() {
   const fetchTasks = useTaskStore((state) => state.fetchTasks);
@@ -65,6 +66,14 @@ function App() {
           element={
             <div className="container">
               <AddNewVolunteer />
+            </div>
+          }
+        />
+        <Route
+          path="/schedule"
+          element={
+            <div>
+              <Schedule />
             </div>
           }
         />

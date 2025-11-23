@@ -57,7 +57,8 @@ export const useTaskStore = create((set, get) => ({
   },
 
   // --- UPDATE TASK  ---
- updateTask: async (updatedTask) => {
+// --- UPDATE TASK  ---
+updateTask: async (updatedTask) => {
   try {
     if (!updatedTask._id) throw new Error("Task ID missing");
 
@@ -79,6 +80,8 @@ export const useTaskStore = create((set, get) => ({
     set({ taskError: e.message });
   }
 },
+
+
 
   // --- DELETE TASK ---
   deleteTask: async (id) => {
