@@ -7,7 +7,7 @@
 }
 
 body {
-   background-color: lightgray;
+   background-color: #eae2b7;
    margin: 0;
    padding-bottom: 50px;
 }
@@ -42,7 +42,7 @@ body {
 }
 
 .navContainer {
-  background-color: black;
+  background-color: #003049;
   width: 100%;
 }
 
@@ -62,9 +62,14 @@ body {
     color: white;
 }
 
+.nav a:hover {
+   color: #fcbf49;
+}
+
 h1 {
   font-family: Montserrat;
   padding: 10px 0 0 0;
+  color: #003049;
 }
 
 h2 {
@@ -95,6 +100,30 @@ p {
 .taskCard {
   font-family: Lato;
   background-color: white;
+  /* width: 75%; */
+  margin: 0 auto;
+}
+
+.volunteerCard {
+  font-family: Lato;
+  background-color: white;
+  width: 50%;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+.scheduleTask {
+  font-family: Lato;
+  background-color: white;
+  width: 75%;
+  margin: 0 auto;
+  padding: 25px 0;
+  border-radius: 10px;
+}
+
+.volunteerSelect {
+  width: 50%;
+  margin: 10px auto;
 }
 
 .instructions {
@@ -105,11 +134,13 @@ p {
 
 .editTask {
   display: block;
+  width: 50%;
+  margin: 0 auto;
 }
 
 .instructionsInput {
     margin-bottom: 5px;
-    width: 100%;
+    width: 50%;
     margin-right: 5px;
     overflow: hidden; 
     resize: none;
@@ -121,3 +152,24 @@ p {
   width: 50%;
 margin: 0 auto;
 }
+
+main {
+  display: flex;
+  justify-content: space-around;
+  
+}
+
+.homeCircle {
+  background-color: #fcbf49;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.homeCircle img {
+  width: 100px;
+}
+

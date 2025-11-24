@@ -25,7 +25,7 @@ export default function VolunteerDetails() {
     <div>
       <h2>Volunteer Details</h2>
 
-      <div className="taskCard">
+      <div className="volunteerCard">
         {/* {task.imgURL && <p><img src={`/${task.imgURL}`} className="taskImage" alt={task.title} /></p>} */}
         <p><strong>Name:</strong> {volunteer.name}</p>
         <p><strong>Email:</strong> {volunteer.email}</p>

@@ -11,6 +11,8 @@ import EditTask from "./pages/EditTask";
 import VolunteerDetails from "./pages/VolunteerDetails";
 import EditVolunteer from "./pages/EditVolunteer";
 import Schedule from "./pages/Schedule";
+import Hero from "./components/Hero";
+import Safety from "./pages/Safety";
 
 function App() {
   const fetchTasks = useTaskStore((state) => state.fetchTasks);
@@ -25,6 +27,16 @@ function App() {
       <h1>Building Maintenance</h1>
 
       <Routes>
+
+        <Route
+          path="/"
+          element={
+            <div className="container">
+             <Hero />
+            </div>
+          }
+          />
+
         {/* Display all tasks */}
         <Route
           path="/tasks"
@@ -69,6 +81,17 @@ function App() {
             </div>
           }
         />
+
+   <Route
+          path="/safety"
+          element={
+            <div>
+              <Safety />
+            </div>
+          }
+        />
+
+
         <Route
           path="/schedule"
           element={

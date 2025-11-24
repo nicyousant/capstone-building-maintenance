@@ -66,12 +66,12 @@ export default function Schedule() {
       {upcomingTasks.length === 0 && <p>No upcoming tasks.</p>}
 
       {upcomingTasks.map(task => (
-        <div key={task._id} className="taskCard" style={{ marginBottom: "20px" }}>
+        <div key={task._id} className="scheduleTask" style={{ marginBottom: "20px" }}>
           <p><strong>{task.title}</strong></p>
           <p>Due: {task.dueDate ? task.dueDate.slice(0, 10) : "-"}</p>
 
           <label>Lead Volunteer</label>
-          <Select
+          <Select className="volunteerSelect"
             options={volunteerOptions}
             value={taskAssignments[task._id]?.leadVolunteer || null}
             onChange={val =>
@@ -87,7 +87,7 @@ export default function Schedule() {
           />
 
           <label style={{ marginTop: "10px" }}>Additional Volunteers</label>
-          <Select
+          <Select className="volunteerSelect"
             options={volunteerOptions}
             value={taskAssignments[task._id]?.additionalVolunteers || []}
             onChange={val =>
