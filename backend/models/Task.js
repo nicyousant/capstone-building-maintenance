@@ -11,7 +11,20 @@ const taskSchema = new mongoose.Schema({
 ],
     lastCompleted: { type: Date },
     dueDate: { type: Date },
-    frequency: { type: String, required: true}
+    frequency: { type: String, required: true},
+
+    leadVolunteer: {
+  type: mongoose.Schema.Types.ObjectId,
+  ref: "volunteer",   // points to model name 
+  default: null
+},
+
+additionalVolunteers: [
+  {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "volunteer"
+  }
+]
 })
 
 // first argument is the name of the model

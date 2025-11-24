@@ -12,6 +12,44 @@ const volunteers = [
             {text: "general cleaning"}
         ]
     },
+
+     {
+        name: "Jenny Plumber",
+        email: "jennyplumber@email.com",
+        phone: "724-111-1122",
+        skills: [
+            {text: "plumbing"},
+            {text: "HVAC"},
+            {text: "electrical"},
+            {text: "general cleaning"},
+            {text: "painting"}
+        ]
+    },
+
+     {
+        name: "Mark Plumber",
+        email: "markplumber@email.com",
+        phone: "724-111-3322",
+        skills: [
+            {text: "plumbing"},
+            {text: "HVAC"},
+            {text: "electrical"},
+            {text: "general cleaning"}
+        ]
+    },
+
+     {
+        name: "Susan Plumber",
+        email: "sueplumber@email.com",
+        phone: "724-111-9922",
+        skills: [
+            {text: "plumbing"},
+            {text: "HVAC"},
+            {text: "electrical"},
+            {text: "general cleaning"}
+        ]
+    },
+
         {
         name: "Missy Painter",
         email: "mpainter@email.com",
@@ -19,6 +57,19 @@ const volunteers = [
         skills: [
             {text: "painting"},
             {text: "landscaping"},
+            {text: "general cleaning"}
+        ]
+    },
+
+    
+        {
+        name: "Tony Painter",
+        email: "tpainter@email.com",
+        phone: "724-111-2244",
+        skills: [
+            {text: "painting"},
+            {text: "landscaping"},
+               {text: "electrical"},
             {text: "general cleaning"}
         ]
     },
@@ -30,6 +81,54 @@ const volunteers = [
             {text: "carpentry"},
             {text: "roofing"},
             {text: "general cleaning"}
+        ]
+    },
+
+     {
+        name: "Betty Carpenter",
+        email: "bcarpenter@email.com",
+        phone: "412-111-3355",
+        skills: [
+            {text: "carpentry"},
+            {text: "roofing"},
+            {text: "general cleaning"},
+            {text: "landscaping"}
+        ]
+    },
+         {
+        name: "Jeremy Carpenter",
+        email: "jcarpenter@email.com",
+        phone: "412-111-3399",
+        skills: [
+            {text: "carpentry"},
+            {text: "roofing"},
+            {text: "general cleaning"},
+            {text: "landscaping"},
+             {text: "painting"}
+        ]
+    },
+
+    {
+        name: "Emily Plant",
+        email: "emilyplant@email.com",
+        phone: "412-111-3300",
+        skills: [
+            {text: "roofing"},
+            {text: "general cleaning"},
+            {text: "landscaping"},
+             {text: "painting"}
+        ]
+    },
+
+        {
+        name: "Tim Plant",
+        email: "timplant@email.com",
+        phone: "412-217-3300",
+        skills: [
+            {text: "roofing"},
+            {text: "general cleaning"},
+            {text: "landscaping"},
+             {text: "painting"}
         ]
     },
 ]
