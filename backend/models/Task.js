@@ -12,6 +12,7 @@ const taskSchema = new mongoose.Schema({
     lastCompleted: { type: Date },
     dueDate: { type: Date },
     frequency: { type: String, required: true},
+    workDate: { type: Date, default: null },
 
     leadVolunteer: {
   type: mongoose.Schema.Types.ObjectId,

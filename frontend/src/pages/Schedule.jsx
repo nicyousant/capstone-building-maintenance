@@ -5,75 +5,99 @@ import Select from "react-select";
 export default function Schedule() {
   const { tasks, volunteers, fetchTasks, fetchVolunteers, updateTask } = useTaskStore();
 
-  // This will hold a mapping of taskId -> { leadVolunteer, additionalVolunteers }
+  // taskId -> { leadVolunteer, additionalVolunteers, workDate }
   const [taskAssignments, setTaskAssignments] = useState({});
 
-  // fetch tasks and volunteers on load
+  // fetch tasks and volunteers when page loads
   useEffect(() => {
     fetchTasks();
     fetchVolunteers();
   }, [fetchTasks, fetchVolunteers]);
 
-  // Initialize taskAssignments once tasks and volunteers are loaded
+  // Initialize assignment state from tasks
   useEffect(() => {
     if (tasks.length === 0 || volunteers.length === 0) return;
 
-    const volunteerOptions = volunteers.map(v => ({ value: v._id.toString(), label: v.name }));
+    const volunteerOptions = volunteers.map(v => ({
+      value: v._id.toString(),
+      label: v.name
+    }));
 
     const initialAssignments = {};
     tasks.forEach(task => {
-      const leadId = task.leadVolunteer ? task.leadVolunteer.toString() : null;
-      const lead = volunteerOptions.find(v => v.value === leadId) || null;
+      const lead = volunteerOptions.find(v => v.value === task.leadVolunteer) || null;
 
-      const additionalIds = task.additionalVolunteers.map(v => v.toString());
-      const additional = volunteerOptions.filter(v => additionalIds.includes(v.value));
+      const additional = volunteerOptions.filter(v =>
+        task.additionalVolunteers?.includes(v.value)
+      );
 
       initialAssignments[task._id] = {
         leadVolunteer: lead,
-        additionalVolunteers: additional
+        additionalVolunteers: additional,
+        workDate: task.workDate ? task.workDate.slice(0, 10) : ""
       };
     });
 
     setTaskAssignments(initialAssignments);
   }, [tasks, volunteers]);
 
-  // Save a task's assignment
+  // Save assignments for a specific task
   async function handleSave(taskId) {
-    const assignment = taskAssignments[taskId];
-    if (!assignment) return;
+    const a = taskAssignments[taskId];
+    if (!a) return;
 
-    const task = tasks.find(t => t._id === taskId);
-    if (!task) return;
+    const originalTask = tasks.find(t => t._id === taskId);
+    if (!originalTask) return;
 
     const updated = {
-      ...task,
-      leadVolunteer: assignment.leadVolunteer ? assignment.leadVolunteer.value : null,
-      additionalVolunteers: assignment.additionalVolunteers.map(v => v.value)
+      ...originalTask,
+      leadVolunteer: a.leadVolunteer ? a.leadVolunteer.value : null,
+      additionalVolunteers: a.additionalVolunteers.map(v => v.value),
+      workDate: a.workDate || null,  
     };
 
     await updateTask(updated);
-    alert(`Task "${task.title}" updated!`);
+    alert(`Task "${originalTask.title}" updated!`);
   }
 
-  const volunteerOptions = volunteers.map(v => ({ value: v._id.toString(), label: v.name }));
+  const volunteerOptions = volunteers.map(v => ({
+    value: v._id.toString(),
+    label: v.name
+  }));
 
-  // upcoming tasks
   const upcomingTasks = tasks
-  .filter(t => t.dueDate && new Date(t.dueDate) >= new Date())
+    .filter(t => t.dueDate && new Date(t.dueDate) >= new Date())
     .sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
 
-    return (
+  return (
     <div>
       <h2>Schedule Tasks</h2>
-      {upcomingTasks.length === 0 && <p>No upcoming tasks.</p>}
 
       {upcomingTasks.map(task => (
         <div key={task._id} className="scheduleTask" style={{ marginBottom: "20px" }}>
           <p><strong>{task.title}</strong></p>
-          <p>Due: {task.dueDate ? task.dueDate.slice(0, 10) : "-"}</p>
+          <p>Due: {task.dueDate?.slice(0, 10) || "-"}</p>
+
+      
+          <label>Work Date</label>
+          <input
+            type="date"
+            value={taskAssignments[task._id]?.workDate || ""}
+            onChange={(e) =>
+              setTaskAssignments({
+                ...taskAssignments,
+                [task._id]: {
+                  ...taskAssignments[task._id],
+                  workDate: e.target.value
+                }
+              })
+            }
+            style={{ display: "block", marginBottom: "10px" }}
+          />
 
           <label>Lead Volunteer</label>
-          <Select className="volunteerSelect"
+          <Select
+            className="volunteerSelect"
             options={volunteerOptions}
             value={taskAssignments[task._id]?.leadVolunteer || null}
             onChange={val =>
@@ -85,12 +109,13 @@ export default function Schedule() {
                 }
               })
             }
-            // This is a React-Select prop that allows the user to clear the selection.
+            //React-Select prop
             isClearable
           />
 
           <label style={{ marginTop: "10px" }}>Additional Volunteers</label>
-          <Select className="volunteerSelect"
+          <Select
+            className="volunteerSelect"
             options={volunteerOptions}
             value={taskAssignments[task._id]?.additionalVolunteers || []}
             onChange={val =>
@@ -102,7 +127,7 @@ export default function Schedule() {
                 }
               })
             }
-            // This is a React-Select prop that allows the user to select more than one option.
+            //React-Select prop
             isMulti
           />
 

@@ -15,12 +15,13 @@ export default function EditTask() {
   const [frequency, setFrequency] = useState("");
   const [lastCompleted, setLastCompleted] = useState("");
   const [dueDate, setDueDate] = useState("");
+  const [workDate, setWorkDate] = useState("");   
   const [instructions, setInstructions] = useState([]);
   const [imgURL, setImgURL] = useState("");
   const [leadVolunteer, setLeadVolunteer] = useState(null);
   const [additionalVolunteers, setAdditionalVolunteers] = useState([]);
 
-  // Initialize form when task & volunteers are loaded
+  // Initialize form when task & volunteers load
   useEffect(() => {
     if (!task) return;
 
@@ -28,12 +29,15 @@ export default function EditTask() {
     setFrequency(task.frequency);
     setLastCompleted(task.lastCompleted ? task.lastCompleted.slice(0,10) : "");
     setDueDate(task.dueDate ? task.dueDate.slice(0,10) : "");
+    setWorkDate(task.workDate ? task.workDate.slice(0,10) : "");   
     setInstructions(task.instructions.map(inst => inst.text));
     setImgURL(task.imgURL || "");
 
     const volunteerOptions = volunteers.map(v => ({ value: v._id, label: v.name }));
     setLeadVolunteer(volunteerOptions.find(v => v.value === task.leadVolunteer) || null);
-    setAdditionalVolunteers(volunteerOptions.filter(v => task.additionalVolunteers.includes(v.value)));
+    setAdditionalVolunteers(
+      volunteerOptions.filter(v => task.additionalVolunteers.includes(v.value))
+    );
   }, [task, volunteers]);
 
   function handleInstructionChange(index, value) {
@@ -60,8 +64,11 @@ export default function EditTask() {
       frequency,
       lastCompleted: lastCompleted || null,
       dueDate: dueDate || null,
+      workDate: workDate || null,     
       imgURL: imgURL || null,
-      instructions: instructions.filter(text => text.trim() !== "").map(text => ({ text })),
+      instructions: instructions
+        .filter(text => text.trim() !== "")
+        .map(text => ({ text })),
       leadVolunteer: leadVolunteer ? leadVolunteer.value : null,
       additionalVolunteers: additionalVolunteers.map(v => v.value),
     };
@@ -76,6 +83,7 @@ export default function EditTask() {
     <div>
       <h2>Edit Task</h2>
       <form onSubmit={handleSave} className="editTask">
+
         <p>
           <label>Title:</label>
           <input value={title} onChange={e => setTitle(e.target.value)} required />
@@ -97,8 +105,18 @@ export default function EditTask() {
         </p>
 
         <p>
+          <label>Work Date:</label> 
+          <input type="date" value={workDate} onChange={e => setWorkDate(e.target.value)} />
+        </p>
+
+        <p>
           <label>Image URL:</label>
-          <input type="text" value={imgURL} onChange={e => setImgURL(e.target.value)} placeholder="image.jpg" />
+          <input
+            type="text"
+            value={imgURL}
+            onChange={e => setImgURL(e.target.value)}
+            placeholder="image.jpg"
+          />
         </p>
 
         <h3>Instructions:</h3>
