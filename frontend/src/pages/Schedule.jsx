@@ -58,9 +58,11 @@ export default function Schedule() {
   const volunteerOptions = volunteers.map(v => ({ value: v._id.toString(), label: v.name }));
 
   // upcoming tasks
-  const upcomingTasks = tasks.filter(t => t.dueDate && new Date(t.dueDate) >= new Date());
+  const upcomingTasks = tasks
+  .filter(t => t.dueDate && new Date(t.dueDate) >= new Date())
+    .sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
 
-  return (
+    return (
     <div>
       <h2>Schedule Tasks</h2>
       {upcomingTasks.length === 0 && <p>No upcoming tasks.</p>}
@@ -83,6 +85,7 @@ export default function Schedule() {
                 }
               })
             }
+            // This is a React-Select prop that allows the user to clear the selection.
             isClearable
           />
 
@@ -99,6 +102,7 @@ export default function Schedule() {
                 }
               })
             }
+            // This is a React-Select prop that allows the user to select more than one option.
             isMulti
           />
 

@@ -59,7 +59,8 @@ body {
 
 .nav a {
   text-decoration: none;
-    color: white;
+    /* color: white; */
+     color: #eae2b7;
 }
 
 .nav a:hover {
@@ -70,6 +71,8 @@ h1 {
   font-family: Montserrat;
   padding: 10px 0 0 0;
   color: #003049;
+  margin-top: 50px;
+  margin-bottom: 25px;
 }
 
 h2 {
@@ -156,7 +159,7 @@ margin: 0 auto;
 main {
   display: flex;
   justify-content: space-around;
-  
+  padding-top: 50px;
 }
 
 
@@ -178,9 +181,15 @@ section {
   align-items: center;
   display: flex;
   justify-content: center;
+    transition: transform 0.2s ease;
 }
 
 .homeCircle img {
   width: 100px;
 }
 
+.homeCircle:hover {
+    border: 2px solid #d62828;
+    transform: rotate(10deg);
+
+}
