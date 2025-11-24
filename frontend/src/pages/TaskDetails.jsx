@@ -41,15 +41,16 @@ export default function TaskDetails() {
           </p>
         )}
 
-        <p><strong>Title:</strong> {task.title}</p>
+        <h3>{task.title}</h3>
         <p><strong>Frequency:</strong> {task.frequency}</p>
         <p><strong>Last Completed:</strong> {task.lastCompleted ? task.lastCompleted.slice(0,10) : "-"}</p>
         <p><strong>Due Date:</strong> {task.dueDate ? task.dueDate.slice(0,10) : "-"}</p>
         <p><strong>Work Date:</strong> {task.workDate ? task.workDate.slice(0,10) : "-"}</p>
 
         <h3>Instructions:</h3>
+        <div className="instructions">
         {task.instructions.length > 0 ? (
-          <ul>
+          <ul className="checkBullet">
             {task.instructions.map((inst, i) => (
               <li key={i}>{inst.text}</li>
             ))}
@@ -57,7 +58,7 @@ export default function TaskDetails() {
         ) : (
           <p>No instructions.</p>
         )}
-
+</div>
         <h3>Lead Volunteer:</h3>
         <p>{leadVolunteerName}</p>
 
@@ -81,7 +82,7 @@ export default function TaskDetails() {
       </button>
 
       {/* DELETE BUTTON */}
-      <button
+      <button className="deleteBtn"
      
         onClick={handleDelete}
       >

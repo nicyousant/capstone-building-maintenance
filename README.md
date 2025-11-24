@@ -25,7 +25,9 @@ Node:
 - Node provides a JavaScript runtime on which servers can be built.
 
 
-Description: 
+
+Description: Application to host tasks, volunteers, and schedule for building maintenance. 
+
 
 Home: 
 - From the home page, the user can use one of the circles or the nav bar links to navigate to other pages of the app.
@@ -36,6 +38,7 @@ DisplayTasks:
 TaskDetails:
 - Click on one of the task cards to see all details of the task.
 - Click the "Edit Task" button to open the task in edit mode. 
+- Click the "Delete Task" button to delete the current task.
 
 EditTask:
 - In edit mode, the user can delete steps from the instructions or change any other details related to the task, including title, frequency, last completed date, and due date. 
@@ -72,3 +75,4 @@ Safety
 Future Enhancements:
 - Add more tasks.
 - Enhance scheduling capabilities to include the ability to send reminders. 
+- Add ability to select volunteers based on skill. 

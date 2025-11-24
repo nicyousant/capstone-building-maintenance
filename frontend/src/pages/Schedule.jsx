@@ -74,13 +74,13 @@ export default function Schedule() {
       <h2>Schedule Tasks</h2>
 
       {upcomingTasks.map(task => (
-        <div key={task._id} className="scheduleTask" style={{ marginBottom: "20px" }}>
-          <p><strong>{task.title}</strong></p>
-          <p>Due: {task.dueDate?.slice(0, 10) || "-"}</p>
+        <div key={task._id} className="scheduleTask" >
+          <h3>{task.title}</h3>
+          <p><strong>Due: </strong>{task.dueDate?.slice(0, 10) || "-"}</p>
 
       
-          <label>Work Date</label>
-          <input
+         <p> <label>Work Date: </label>
+          <input className="workDate"
             type="date"
             value={taskAssignments[task._id]?.workDate || ""}
             onChange={(e) =>
@@ -92,8 +92,8 @@ export default function Schedule() {
                 }
               })
             }
-            style={{ display: "block", marginBottom: "10px" }}
-          />
+        
+          /></p>
 
           <label>Lead Volunteer</label>
           <Select
@@ -113,7 +113,7 @@ export default function Schedule() {
             isClearable
           />
 
-          <label style={{ marginTop: "10px" }}>Additional Volunteers</label>
+          <label>Additional Volunteers</label>
           <Select
             className="volunteerSelect"
             options={volunteerOptions}

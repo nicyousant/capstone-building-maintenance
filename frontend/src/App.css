@@ -43,7 +43,7 @@ body {
   border-radius: 10px;
   width: 50%;
   margin: 0 auto;
-  background-color: white;
+  background-color: #fcbf49;
 }
 
 .taskImage {
@@ -128,20 +128,33 @@ p {
   font-family: Lato;
   background-color: white;
   width: 75%;
-  margin: 0 auto;
+  margin: 20px auto;
   padding: 25px 0;
   border-radius: 10px;
+  /* display: block; */
 }
 
 .volunteerSelect {
   width: 50%;
-  margin: 10px auto;
+  margin: 10px auto 10px auto;
+      transition: transform 0.2s ease;
+}
+
+.volunteerSelect:hover {
+    border: 2px solid #d62828;
 }
 
 .instructions {
   padding-bottom: 10px;
   text-align: left;
   font-family: Lato;
+
+}
+
+.instructions li {
+  margin-bottom: 10px;
+  font-size: 14px;
+    padding-right: 20px;
 }
 
 .editTask {
@@ -202,3 +215,21 @@ section {
     transform: rotate(10deg);
 
 }
+
+.checkBullet {
+  list-style-type: square;
+
+ 
+}
+
+.workDate {
+ align-items: center;
+}
+
+/* .deleteBtn {
+ 
+}
+
+.deleteBtn:hover {
+
+} */
