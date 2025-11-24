@@ -159,6 +159,17 @@ main {
   
 }
 
+
+section {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+ width: 60%;
+ margin: 10px auto;
+ gap: 10px;
+  
+}
+
 .homeCircle {
   background-color: #fcbf49;
   width: 200px;
