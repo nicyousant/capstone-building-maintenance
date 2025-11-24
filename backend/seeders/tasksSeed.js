@@ -86,7 +86,7 @@ const tasks = [
 
        {
         imgURL: "roof.jpg",
-        title: "Roof, Gutters, & Downspouts ",
+        title: "Roof, Gutters, & Downspouts",
         instructions: [ 
                 {text: "Verify that the construction is still structurally strong."},
                 {text: "Verify that the wood is still in good condition."}, 
@@ -106,6 +106,98 @@ const tasks = [
         dueDate: "11/6/2026",
         frequency: "Yearly",
     },
+
+           {
+        imgURL: "fountain.jpg",
+        title: "Drinking Fountains",
+        instructions: [ 
+                {text: "Check the operation of the cooler. The water should be about 50°F."},
+                {text: "Clean the condenser coil, compressor compartment, and condenser fan."}, 
+                {text: "Clean the filter on the fill line."},
+                {text: "Remove any lime or buildup from the mouthpiece and drain."},
+                {text: "Check that the drain functions properly."},
+                {text: "Replace water filter (if applicable)."},
+                {text: "Adjust the push bar/button to achieve desired water spray height."},
+        ],
+        lastCompleted: "8/6/2025",
+        dueDate: "8/6/2026",
+        frequency: "Yearly",
+    },
+
+               {
+        imgURL: "pavement.jpg",
+        title: "Roads, Pavement, & Walkways",
+        instructions: [ 
+                {text: "Inspect the entire surface of roads, pavements, and walkways. Look for cracks, unevenness, and areas of sinking or heaving."},
+                {text: "Inspect all sealed joints for debonding, deterioration or cracks in sealant."}, 
+                {text: "Check for holes."},
+                {text: "Check edges and surrounding areas for signs of erosion."},
+                {text: "Check all curbs for signs of damage."},
+                {text: "Ensure drainage ditches, culverts, gutters, etc. are clear."},
+                {text: "Ensure unwanted vegetation is removed, especially in cracks or joints."},
+                  {text: "Check for oil stains and remove with a suitable degreaser."},
+                    {text: "Restripe parking lot lines (as needed)."},
+        ],
+        lastCompleted: "7/9/2025",
+        dueDate: "7/9/2026",
+        frequency: "Yearly",
+    },
+
+                   {
+        imgURL: "partitions.jpg",
+        title: "Doors & Bathroom Partitions",
+        instructions: [ 
+                {text: "Verify operation of hinges, latches and locks on interior and exterior doors.  If needed, lubricate push bars and hinges with grease using silicone-based or manufacturer recommended grease; do not use WD-40."},
+                {text: "Verify that doors fitted with closers will self-close fully and lock.  Adjust as necessary."}, 
+                {text: "Inspect for broken glass, scratches in the finish, rust, loose or missing fixing screws, broken, or damaged hardware."},
+                {text: "Check condition of the caulking."},
+                {text: "Inspect condition of paint and touch up as needed, using the appropriate color, sheen, and paint type."},
+                {text: "Verify operation of hinges and locks on all bathroom stall doors. Lubricate with a silicone-based aerosol spray, if required."},
+                {text: "Check for scratches, rust, and the general condition of the finish. When making repairs, take care not to spoil the overall appearance of the doors."},
+                  {text: "Check that the doors do not hang or catch on the frames."},
+                    {text: "Check for rust on metal frame of partitioning."},
+        ],
+        lastCompleted: "6/8/2025",
+        dueDate: "6/8/2026",
+        frequency: "Yearly",
+    },
+  {
+        imgURL: "outside-ac-unit.jpg",
+        title: "HVAC",
+        instructions: [ 
+                {text: "While equipment is running, listen for unusual noises."},
+                {text: "While equipment is NOT running, follow all appropriate lock-out/tag-out procedures."}, 
+                {text: "Check all filters. Clean or replace as needed."},
+                {text: "Check heating and cooling coils; clean as needed."},
+                {text: "Check operation of fans and belts."},
+                {text: "Wipe down the inside and outside of units."},
+                {text: "Inspect the condensate drains making sure it functions properly."},
+                  {text: "Replace covers or guards."},
+                    {text: "Power unit on and listen for any unusual noises."},
+        ],
+        lastCompleted: "9/30/2025",
+        dueDate: "12/31/2025",
+        frequency: "Quarterly",
+    },
+
+      {
+        imgURL: "faucet.jpg",
+        title: "Plumbing System",
+        instructions: [ 
+                {text: "Test the faucet to see if it works properly and that there are no leaks."},
+                {text: "Remove the filter from the tap outlet and clean out any debris."}, 
+                {text: "Replace filter and tap outlet. Tighten properly."},
+                {text: "Check that the faucet assembly is tight in the sink."},
+                {text: "Check that the adjustment of the plug assembly is tight, properly adjusted, and holds water."},
+                {text: "Check condition of the water connections to the faucet."},
+                {text: "Replace batteries in automatic faucets (if applicable)."},
+                  {text: "Exercise angle stop valves."},
+        ],
+        lastCompleted: "4/30/2025",
+        dueDate: "4/30/2026",
+        frequency: "Quarterly",
+    },
+    
 ]
 
 

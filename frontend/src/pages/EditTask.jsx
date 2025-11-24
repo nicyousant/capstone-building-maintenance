@@ -75,7 +75,7 @@ export default function EditTask() {
   return (
     <div>
       <h2>Edit Task</h2>
-      <form onSubmit={handleSave}>
+      <form onSubmit={handleSave} className="editTask">
         <p>
           <label>Title:</label>
           <input value={title} onChange={e => setTitle(e.target.value)} required />

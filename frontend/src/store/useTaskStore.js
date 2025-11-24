@@ -57,7 +57,6 @@ export const useTaskStore = create((set, get) => ({
   },
 
   // --- UPDATE TASK  ---
-// --- UPDATE TASK  ---
 updateTask: async (updatedTask) => {
   try {
     if (!updatedTask._id) throw new Error("Task ID missing");

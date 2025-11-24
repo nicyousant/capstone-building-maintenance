@@ -15,16 +15,30 @@ body {
 .displayCards {
   display: flex;
   justify-content: space-around;
+  width: 75%;
+  margin: 0 auto;
 }
 
 .taskCard {
   border: 1px solid black;
   padding: 10px;
   border-radius: 10px;
+  font-family: Lato;
+  background-color: #fcbf49;
+  /* width: 75%; */
+  margin: 10px auto 10px auto;
+  transition: transform 0.2s ease;
+  font-size: 12px;
+  color: #003049;
+}
+
+.taskCard:hover {
+    border: 2px solid #d62828;
+    transform: rotate(5deg);
 }
 
 .taskDetails {
-    border: 1px solid black;
+  border: 1px solid black;
   padding: 10px;
   border-radius: 10px;
   width: 50%;
@@ -100,12 +114,7 @@ p {
   flex-wrap: wrap;
 }
 
-.taskCard {
-  font-family: Lato;
-  background-color: white;
-  /* width: 75%; */
-  margin: 0 auto;
-}
+
 
 .volunteerCard {
   font-family: Lato;
