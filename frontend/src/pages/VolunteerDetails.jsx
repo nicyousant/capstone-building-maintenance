@@ -26,18 +26,18 @@ export default function VolunteerDetails() {
       <h2>Volunteer Details</h2>
 
       <div className="volunteerCard">
-        {/* {task.imgURL && <p><img src={`/${task.imgURL}`} className="taskImage" alt={task.title} /></p>} */}
+       
         <p><strong>Name:</strong> {volunteer.name}</p>
         <p><strong>Email:</strong> {volunteer.email}</p>
 <p><strong>Phone:</strong> {volunteer.phone}</p>
 
         <h3>Skills:</h3>
         {volunteer.skills.length > 0 ? (
-          <ul >
+          <div >
             {volunteer.skills.map((skill, i) => (
-              <li key={i} className="instructions">{skill.text}</li>
+              <p key={i} className="skillList">{skill.text}</p>
             ))}
-          </ul>
+          </div>
         ) : (
           <p>No skills.</p>
         )}

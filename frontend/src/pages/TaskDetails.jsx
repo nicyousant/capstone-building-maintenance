@@ -75,7 +75,7 @@ export default function TaskDetails() {
       </div>
 
       <button
-        style={{ marginTop: "20px" }}
+         className="editBtn"
         onClick={() => navigate(`/tasks/${task._id}/edit`)}
       >
         Edit Task

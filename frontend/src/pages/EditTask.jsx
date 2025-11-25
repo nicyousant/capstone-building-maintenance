@@ -82,35 +82,36 @@ export default function EditTask() {
   return (
     <div>
       <h2>Edit Task</h2>
-      <form onSubmit={handleSave} className="editTask">
+      <div className="editTask">
+      <form onSubmit={handleSave} >
 
         <p>
-          <label>Title:</label>
+          <label><strong>Title: </strong></label>
           <input value={title} onChange={e => setTitle(e.target.value)} required />
         </p>
 
         <p>
-          <label>Frequency:</label>
+          <label><strong>Frequency: </strong></label>
           <input value={frequency} onChange={e => setFrequency(e.target.value)} required />
         </p>
 
         <p>
-          <label>Last Completed:</label>
+          <label><strong>Last Completed: </strong></label>
           <input type="date" value={lastCompleted} onChange={e => setLastCompleted(e.target.value)} />
         </p>
 
         <p>
-          <label>Due Date:</label>
+          <label><strong>Due Date: </strong></label>
           <input type="date" value={dueDate} onChange={e => setDueDate(e.target.value)} />
         </p>
 
         <p>
-          <label>Work Date:</label> 
+          <label><strong>Work Date: </strong></label> 
           <input type="date" value={workDate} onChange={e => setWorkDate(e.target.value)} />
         </p>
 
         <p>
-          <label>Image URL:</label>
+          <label><strong>Image URL: </strong></label>
           <input
             type="text"
             value={imgURL}
@@ -121,7 +122,7 @@ export default function EditTask() {
 
         <h3>Instructions:</h3>
         {instructions.map((inst, i) => (
-          <div key={i} style={{ display: "flex", marginBottom: "5px" }}>
+          <div key={i} className="editInstructions">
             <textarea
               className="instructionsInput"
               value={inst}
@@ -130,10 +131,10 @@ export default function EditTask() {
             <button type="button" onClick={() => removeInstruction(i)}>✕</button>
           </div>
         ))}
-        <button type="button" onClick={addInstruction}>Add Step</button>
+        <button type="button" onClick={addInstruction} className="addBtn">Add Step</button>
 
         <h3>Lead Volunteer</h3>
-        <Select
+        <Select className="volunteerSelect"
           options={volunteerOptions}
           value={leadVolunteer}
           onChange={setLeadVolunteer}
@@ -141,7 +142,7 @@ export default function EditTask() {
         />
 
         <h3>Additional Volunteers</h3>
-        <Select
+        <Select className="volunteerSelect"
           options={volunteerOptions}
           value={additionalVolunteers}
           onChange={setAdditionalVolunteers}
@@ -149,8 +150,8 @@ export default function EditTask() {
         />
 
         <br /><br />
-        <button type="submit">Save Changes</button>
-      </form>
-    </div>
+        <button type="submit" className="saveBtn">Save Changes</button>
+      </form> </div>
+    </div> 
   );
 }

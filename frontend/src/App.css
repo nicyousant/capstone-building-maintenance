@@ -20,7 +20,7 @@ body {
 }
 
 .taskCard {
-  border: 1px solid black;
+  border: 1px solid #003049;
   padding: 10px;
   border-radius: 10px;
   font-family: Lato;
@@ -38,12 +38,13 @@ body {
 }
 
 .taskDetails {
-  border: 1px solid black;
+  border: 1px solid #003049;
   padding: 10px;
   border-radius: 10px;
   width: 50%;
   margin: 0 auto;
   background-color: #fcbf49;
+  color: #003049;
 }
 
 .taskImage {
@@ -51,9 +52,11 @@ body {
   border-radius: 10px;
 }
 
-.skillList {
-  list-style-type: none;
-}
+/* .skillList {
+
+  padding: 0;
+  margin: 0;
+} */
 
 .navContainer {
   background-color: #003049;
@@ -81,6 +84,12 @@ body {
    color: #fcbf49;
 }
 
+
+.navItem {
+  font-size: 12px;
+}
+
+
 h1 {
   font-family: Montserrat;
   padding: 10px 0 0 0;
@@ -93,6 +102,7 @@ h2 {
   font-family: Montserrat;
   padding: 5px 10px;
   margin: 25px 10px;
+  color: #003049;
 }
 
 label {
@@ -159,16 +169,25 @@ p {
 
 .editTask {
   display: block;
-  width: 50%;
-  margin: 0 auto;
+  width: 75%;
+  border: 1px solid #003049;
+  padding: 50px;
+  border-radius: 10px;
+  font-family: Lato;
+  background-color: #fcbf49;
+  /* width: 75%; */
+  margin: 10px auto 10px auto;
+  font-size: 12px;
+  color: #003049;
 }
 
 .instructionsInput {
     margin-bottom: 5px;
-    width: 50%;
+    width: 75%;
     margin-right: 5px;
     overflow: hidden; 
     resize: none;
+   
 }
 
 .newVolunteerForm {
@@ -182,6 +201,12 @@ main {
   display: flex;
   justify-content: space-around;
   padding-top: 50px;
+  flex-wrap: wrap;
+}
+
+main a {
+  text-decoration: none;
+  color:#003049;
 }
 
 
@@ -203,7 +228,8 @@ section {
   align-items: center;
   display: flex;
   justify-content: center;
-    transition: transform 0.2s ease;
+  transition: transform 0.2s ease;
+  text-align: center;
 }
 
 .homeCircle img {
@@ -226,10 +252,71 @@ section {
  align-items: center;
 }
 
-/* .deleteBtn {
- 
+.deleteBtn {
+  background-color: #003049;
+    transition: transform 0.2s ease-in-out;
+    height: 25px;
+    width: 100px;
+    color: #eae2b7;
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-top: 20px;
 }
 
 .deleteBtn:hover {
+  background-color: #d62828;
+}
 
-} */
+.editBtn {
+  background-color: #003049;
+    transition: transform 0.2s ease-in-out;
+    height: 25px;
+    width: 100px;
+    color: #eae2b7;
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.editBtn:hover {
+  background-color: #f77f00;
+}
+
+
+.addBtn {
+  background-color: #003049;
+    transition: transform 0.2s ease-in-out;
+    height: 25px;
+    width: 150px;
+    color: #eae2b7;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.addBtn:hover {
+  background-color: #f77f00;
+}
+
+
+.saveBtn {
+  background-color: #003049;
+    transition: transform 0.2s ease-in-out;
+    height: 25px;
+    width: 150px;
+    color: #eae2b7;
+    border-radius: 10px;
+    margin-bottom: 50px;
+}
+
+.saveBtn:hover {
+  background-color: #f77f00;
+}
+
+.editInstructions {
+  display:flex;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+
