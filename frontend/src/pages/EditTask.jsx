@@ -6,7 +6,7 @@ import Select from "react-select";
 export default function EditTask() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const { tasks, volunteers, updateTask } = useTaskStore();
+  const { tasks, volunteers, fetchVolunteers, updateTask } = useTaskStore();
 
   const task = tasks.find(t => t._id === id);
 
@@ -21,9 +21,15 @@ export default function EditTask() {
   const [leadVolunteer, setLeadVolunteer] = useState(null);
   const [additionalVolunteers, setAdditionalVolunteers] = useState([]);
 
+ useEffect(() => {
+    if (volunteers.length === 0) {
+      fetchVolunteers();
+    }
+  }, [volunteers, fetchVolunteers]);
+
   // Initialize form when task & volunteers load
   useEffect(() => {
-    if (!task) return;
+    if (!task || volunteers.length === 0) return;
 
     setTitle(task.title);
     setFrequency(task.frequency);

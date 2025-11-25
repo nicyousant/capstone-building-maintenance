@@ -111,7 +111,8 @@ label {
 
 h3 {
   font-family: Montserrat;
-  padding: 10px 0 0 0;
+
+    color: #003049;
 }
 
 p {
@@ -209,14 +210,20 @@ main a {
   color:#003049;
 }
 
-
 section {
+  width:75%;
+  margin: 0 auto;
+}
+
+
+.safetyContainer {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
  width: 60%;
- margin: 10px auto;
- gap: 10px;
+ margin: 20px auto;
+ gap: 40px;
+ padding-top: 25px;
   
 }
 
@@ -237,6 +244,28 @@ section {
 }
 
 .homeCircle:hover {
+    border: 2px solid #d62828;
+    transform: rotate(10deg);
+
+}
+
+.safetyCircle {
+  background-color: #fcbf49;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  transition: transform 0.2s ease;
+  text-align: center;
+}
+
+.safetyCircle img {
+  width: 75px;
+}
+
+.safetyCircle:hover {
     border: 2px solid #d62828;
     transform: rotate(10deg);
 

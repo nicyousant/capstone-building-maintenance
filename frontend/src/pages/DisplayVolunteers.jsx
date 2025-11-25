@@ -33,7 +33,7 @@ export default function DisplayVolunteers() {
                             <strong>Skills:</strong>{" "}
                             {volunteer.skills && volunteer.skills.length > 0 
                                 ? volunteer.skills.map((skill) => (
-                                    <li key={skill._id} className="skillList">{skill.text}</li>
+                                    <p key={skill._id} className="skillList">{skill.text}</p>
                                   ))
                                 : "No skills listed"
                             }
