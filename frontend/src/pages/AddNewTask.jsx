@@ -55,47 +55,48 @@ export default function AddNewTask() {
     <div>
       <h2>Add New Task</h2>
       {error && <p style={{ color: "red" }}>{error}</p>}
+      <div className="editTask">
       <form onSubmit={handleSubmit}>
-        <div>
-          <label>Title:</label>
+        <p>
+           <label><strong>Title: </strong></label>
           <input
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             required
           />
-        </div>
+        </p>
 
-        <div>
-          <label>Frequency:</label>
+        <p>
+          <label><strong>Frequency: </strong></label>
           <input
             type="text"
             value={frequency}
             onChange={(e) => setFrequency(e.target.value)}
             required
           />
-        </div>
+        </p>
 
-        <div>
-          <label>Last Completed:</label>
+        <p>
+          <label><strong>Last Completed: </strong></label>
           <input
             type="date"
             value={lastCompleted}
             onChange={(e) => setLastCompleted(e.target.value)}
           />
-        </div>
+        </p>
 
-        <div>
-          <label>Due Date:</label>
+        <p>
+      <label><strong>Due Date: </strong></label>
           <input
             type="date"
             value={dueDate}
             onChange={(e) => setDueDate(e.target.value)}
           />
-        </div>
-<div>
+        </p>
+<p>
         <label>
-  Image URL (optional):
+  <strong>Image URL</strong> (optional):
   <input
     type="text"
     value={imgURL}
@@ -103,7 +104,7 @@ export default function AddNewTask() {
     placeholder="image.jpg"
   />
 </label>
-</div>
+</p>
 
         <div className="addNewInstructions">
           <h3>Instructions:</h3>
@@ -115,13 +116,13 @@ export default function AddNewTask() {
               required
             /></div>
           ))}
-          <button type="button" onClick={addStep}>
+          <button type="button" className="addBtn" onClick={addStep}>
             Add Step
           </button>
         </div>
 
-        <button type="submit">Save Task</button>
-      </form>
+        <button type="submit" className="saveBtn">Save Task</button>
+      </form> </div>
     </div>
   );
 }
