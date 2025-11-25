@@ -23,7 +23,7 @@ export default function AddNewTask() {
     setInstructions(updated);
   }
 
-  // NEW: Remove step
+  // Remove step
   function removeStep(index) {
     const filtered = instructions.filter((_, i) => i !== index);
     setInstructions(filtered.length > 0 ? filtered : [""]); 

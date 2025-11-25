@@ -10,6 +10,9 @@ export const useTaskStore = create((set, get) => ({
   volunteerError: null,
 
   // --- GET SINGLE TASK ---
+  // get() reads the store
+  // .tasks gives you the task array
+  // .find() returns the task whose _id matches
   getTaskById: (id) => {
     return get().tasks.find((t) => t._id === id);
   },
@@ -72,6 +75,9 @@ updateTask: async (updatedTask) => {
     const data = await res.json();
 
     // Update the task in the Zustand store
+    // Loops through all task
+    // Finds the one with the same _id
+    // Replaces it with the updated version
     set({
       tasks: get().tasks.map((t) => (t._id === data._id ? data : t)),
     });
