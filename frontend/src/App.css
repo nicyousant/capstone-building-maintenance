@@ -400,3 +400,11 @@ section {
 .editVolBtn:hover {
   background-color: #f77f00;
 }
+
+.instructionRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}

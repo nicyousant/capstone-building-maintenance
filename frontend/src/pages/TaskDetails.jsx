@@ -64,11 +64,11 @@ export default function TaskDetails() {
 
         <h3>Additional Volunteers:</h3>
         {additionalNames.length > 0 ? (
-          <ul>
+          <div>
             {additionalNames.map((name, i) => (
-              <li key={i}>{name}</li>
+              <p key={i}>{name}</p>
             ))}
-          </ul>
+          </div>
         ) : (
           <p>None assigned</p>
         )}
