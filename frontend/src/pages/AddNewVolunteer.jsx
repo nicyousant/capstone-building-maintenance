@@ -18,11 +18,10 @@ export default function AddNewVolunteer() {
     setSkills(updated);
   }
 
-  function addSkill() {
-    // prevent adding a new skill until the last one is filled
-    if (skills[skills.length - 1].text.trim() === "") return;
-    setSkills([{ text: "" }]);
-  }
+function addSkill() {
+  if (skills[skills.length - 1].text.trim() === "") return;
+  setSkills((prev) => [...prev, { text: "" }]);
+}
 
   function removeSkill(index) {
     const updated = skills.filter((_, i) => i !== index);
@@ -54,38 +53,40 @@ export default function AddNewVolunteer() {
   return (
 <>
     <h2>Add New Volunteer</h2>
-    <form onSubmit={handleSubmit} className="newVolunteerForm">  
+
+    <div className="volunteerCard">
+    <form onSubmit={handleSubmit} >  
 
 
 
 
-      <label>Name:</label>
+     <p> <label><strong>Name: </strong></label>
       <input
         type="text"
         required
         value={name}
         onChange={(e) => setName(e.target.value)}
-      />
+      /></p>
 
-      <label>Phone:</label>
+    <p>  <label><strong>Phone: </strong></label>
       <input
         type="text"
         required
         value={phone}
         onChange={(e) => setPhone(e.target.value)}
-      />
+      /></p>
 
-<label>Email</label>
+<p><label><strong>Email: </strong></label>
       <input
         type="text"
         required
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-      />
+      /></p>
 
       <h3>Skills</h3>
       {skills.map((skill, index) => (
-        <div key={index} style={{ display: "flex", marginBottom: "5px" }}>
+        <div key={index} style={{marginBottom: "5px"}}>
           <input
             type="text"
             placeholder={`Enter your skill`}
@@ -108,18 +109,22 @@ export default function AddNewVolunteer() {
       ))}
 
       {/* Add skill */}
-      <button
+      <button style={{width: "150px"}}
         type="button"
         onClick={addSkill}
-        disabled={skills[skills.length - 1].text.trim() === ""}
+        disabled={skills[skills.length - 1].text.trim() === ""} 
+     className={
+    skills[skills.length - 1].text.trim() === ""
+      ? "disabledBtn"
+      : "addBtn"}
       >
         Add Skill
       </button>
 
       <br /><br />
 
-      <button type="submit">Add Volunteer</button>
-    </form>
+      <button type="submit" className="addBtn">Add Volunteer</button>
+    </form> </div>
     </>
   );
 }

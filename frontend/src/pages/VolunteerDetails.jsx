@@ -43,18 +43,19 @@ export default function VolunteerDetails() {
         )}
       </div>
 
-      <button
-        style={{ marginTop: "20px" }}
+      <button 
+        className="editVolBtn"
         onClick={() => navigate(`/volunteers/${volunteer._id}/edit`)}
       >
         Edit Volunteer
       </button>
 
             <button
-        style={{ marginTop: "20px", marginLeft: "10px"}}
+        className="deleteVolBtn"
         onClick={handleDelete}
       >
-       <img src="/delete_bl.svg" style={{width: "12px"}}/> Delete Volunteer
+       {/* <img src="/delete_bl.svg" style={{width: "12px"}}/>  */}
+       Delete Volunteer
       </button>
     </div>
 

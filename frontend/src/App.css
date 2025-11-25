@@ -20,16 +20,16 @@ body {
 }
 
 .taskCard {
-  border: 1px solid #003049;
+  border: 1px solid #0E2239;
   padding: 10px;
   border-radius: 10px;
   font-family: Lato;
-  background-color: #fcbf49;
+  background-color: #FCC659;
   /* width: 75%; */
   margin: 10px auto 10px auto;
   transition: transform 0.2s ease;
   font-size: 12px;
-  color: #003049;
+  color: #0E2239;
 }
 
 .taskCard:hover {
@@ -38,13 +38,13 @@ body {
 }
 
 .taskDetails {
-  border: 1px solid #003049;
+  border: 1px solid #0E2239;
   padding: 10px;
   border-radius: 10px;
   width: 50%;
   margin: 0 auto;
-  background-color: #fcbf49;
-  color: #003049;
+  background-color: #FCC659;
+  color: #0E2239;
 }
 
 .taskImage {
@@ -59,7 +59,7 @@ body {
 } */
 
 .navContainer {
-  background-color: #003049;
+  background-color: #0E2239;
   width: 100%;
 }
 
@@ -81,7 +81,7 @@ body {
 }
 
 .nav a:hover {
-   color: #fcbf49;
+   color: #FCC659;
 }
 
 
@@ -93,7 +93,7 @@ body {
 h1 {
   font-family: Montserrat;
   padding: 10px 0 0 0;
-  color: #003049;
+  color: #0E2239;
   margin-top: 50px;
   margin-bottom: 25px;
 }
@@ -102,21 +102,23 @@ h2 {
   font-family: Montserrat;
   padding: 5px 10px;
   margin: 25px 10px;
-  color: #003049;
+  color: #0E2239;
 }
 
 label {
   font-family: Lato;
+  color: #0E2239;
 }
 
 h3 {
   font-family: Montserrat;
 
-    color: #003049;
+    color: #0E2239;
 }
 
 p {
     font-family: Lato;
+    color: #0E2239;
 }
 
 .displayCards {
@@ -128,16 +130,25 @@ p {
 
 
 .volunteerCard {
-  font-family: Lato;
+  /* font-family: Lato;
   background-color: white;
   width: 50%;
   margin: 0 auto;
+  border-radius: 10px; */
+  border: 1px solid #0E2239;
+  padding: 10px;
   border-radius: 10px;
+  width: 50%;
+  margin: 0 auto;
+  background-color: #FCC659;
+  color: #0E2239;
 }
 
 .scheduleTask {
   font-family: Lato;
-  background-color: white;
+  /* background-color: white; */
+   background-color: #FCC659;
+  color: #0E2239;
   width: 75%;
   margin: 20px auto;
   padding: 25px 0;
@@ -171,15 +182,15 @@ p {
 .editTask {
   display: block;
   width: 75%;
-  border: 1px solid #003049;
+  border: 1px solid #0E2239;
   padding: 50px;
   border-radius: 10px;
   font-family: Lato;
-  background-color: #fcbf49;
+  background-color: #FCC659;
   /* width: 75%; */
   margin: 10px auto 10px auto;
   font-size: 12px;
-  color: #003049;
+  color: #0E2239;
 }
 
 .instructionsInput {
@@ -207,7 +218,7 @@ main {
 
 main a {
   text-decoration: none;
-  color:#003049;
+  color:#0E2239;
 }
 
 section {
@@ -228,7 +239,7 @@ section {
 }
 
 .homeCircle {
-  background-color: #fcbf49;
+  background-color: #FCC659;
   width: 200px;
   height: 200px;
   border-radius: 50%;
@@ -250,7 +261,7 @@ section {
 }
 
 .safetyCircle {
-  background-color: #fcbf49;
+  background-color: #FCC659;
   width: 150px;
   height: 150px;
   border-radius: 50%;
@@ -279,10 +290,11 @@ section {
 
 .workDate {
  align-items: center;
+ margin-bottom: 10px;
 }
 
 .deleteBtn {
-  background-color: #003049;
+  background-color: #0E2239;
     transition: transform 0.2s ease-in-out;
     height: 25px;
     width: 100px;
@@ -297,7 +309,7 @@ section {
 }
 
 .editBtn {
-  background-color: #003049;
+  background-color: #0E2239;
     transition: transform 0.2s ease-in-out;
     height: 25px;
     width: 100px;
@@ -313,7 +325,7 @@ section {
 
 
 .addBtn {
-  background-color: #003049;
+  background-color: #0E2239;
     transition: transform 0.2s ease-in-out;
     height: 25px;
     width: 150px;
@@ -327,15 +339,25 @@ section {
   background-color: #f77f00;
 }
 
+.disabledBtn {
+  background-color: #0E2239;
+  opacity: .25;
+  color: white;
+    height: 25px;
+    width: 150px;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 
 .saveBtn {
-  background-color: #003049;
+  background-color: #0E2239;
     transition: transform 0.2s ease-in-out;
     height: 25px;
     width: 150px;
     color: #eae2b7;
     border-radius: 10px;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
 }
 
 .saveBtn:hover {
@@ -349,3 +371,32 @@ section {
 }
 
 
+.deleteVolBtn {
+  background-color: #0E2239;
+    transition: transform 0.2s ease-in-out;
+    height: 25px;
+    width: 150px;
+    color: #eae2b7;
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.deleteVolBtn:hover {
+  background-color: #d62828;
+}
+
+.editVolBtn {
+  background-color: #0E2239;
+    transition: transform 0.2s ease-in-out;
+    height: 25px;
+    width: 150px;
+    color: #eae2b7;
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.editVolBtn:hover {
+  background-color: #f77f00;
+}

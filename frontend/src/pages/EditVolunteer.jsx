@@ -65,9 +65,9 @@ export default function EditVolunteer() {
             <h2>Edit Volunteer</h2>
             {error && <p style={{ color: "red" }}>{error}</p>}
 
-            <form onSubmit={handleSave} className="editTask">
+            <form onSubmit={handleSave} className="volunteerCard">
                 <p>
-                    <label>Name:</label>
+                    <label><strong>Name: </strong></label>
                     <input
                         value={name}
                         onChange={(e) => setName(e.target.value)}
@@ -76,7 +76,7 @@ export default function EditVolunteer() {
                 </p>
 
                 <p>
-                    <label>Email:</label>
+                    <label><strong>Email: </strong></label>
                     <input
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
@@ -85,7 +85,7 @@ export default function EditVolunteer() {
                 </p>
 
                         <p>
-                    <label>Phone:</label>
+                    <label><strong>Phone: </strong></label>
                     <input
                         value={phone}
                         onChange={(e) => setPhone(e.target.value)}
@@ -99,7 +99,7 @@ export default function EditVolunteer() {
                 {skills.map((skill, i) => (
                     <div
                         key={i}
-                        style={{ display: "flex", marginBottom: "5px" }}
+                        className="editInstructions"
                     >
                         <input type="text"
                             className="instructionsInput"
@@ -121,13 +121,13 @@ export default function EditVolunteer() {
                         </button>
                     </div>
                 ))}
-                <button type="button" onClick={addSkill}>
+                <button type="button" className="addBtn" onClick={addSkill}>
                     Add Skill
                 </button>
 
                 <br />
                 <br />
-                <button type="submit">Save Changes</button>
+                <button type="submit" className="saveBtn">Save Changes</button>
             </form>
         </div>
     );

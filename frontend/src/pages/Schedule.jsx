@@ -79,7 +79,7 @@ export default function Schedule() {
           <p><strong>Due: </strong>{task.dueDate?.slice(0, 10) || "-"}</p>
 
       
-         <p> <label>Work Date: </label>
+         <p> <label><strong>Work Date: </strong></label>
           <input className="workDate"
             type="date"
             value={taskAssignments[task._id]?.workDate || ""}
@@ -95,7 +95,7 @@ export default function Schedule() {
         
           /></p>
 
-          <label>Lead Volunteer</label>
+          <p><label>Lead Volunteer</label></p>
           <Select
             className="volunteerSelect"
             options={volunteerOptions}
@@ -113,7 +113,7 @@ export default function Schedule() {
             isClearable
           />
 
-          <label>Additional Volunteers</label>
+          <p><label>Additional Volunteers</label></p>
           <Select
             className="volunteerSelect"
             options={volunteerOptions}
@@ -131,7 +131,7 @@ export default function Schedule() {
             isMulti
           />
 
-          <button style={{ marginTop: "10px" }} onClick={() => handleSave(task._id)}>
+          <button style={{ marginTop: "10px" }} className="saveBtn" onClick={() => handleSave(task._id)}>
             Save Assignment
           </button>
         </div>

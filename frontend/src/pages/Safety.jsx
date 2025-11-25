@@ -4,7 +4,7 @@ export default function Safety() {
        <h2>Safety</h2>
    
        <section>
-            <h3>Always use the appropriate personal protective equipment (PPE) for the task.</h3>
+            <div style={{width: "50%", textAlign: "center", marginLeft: "auto", marginRight: "auto"}}><h3>Always use the appropriate personal protective equipment (PPE) for the task.</h3></div>
             <div className="safetyContainer">
               <div className="safetyCircle"><img src="hardhat.png" /></div>
            <div className="safetyCircle"><img src="high-vis-vest.png" /></div>
