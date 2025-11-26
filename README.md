@@ -1,16 +1,19 @@
 <h1>Capstone: Building Maintenance App</h1>
 
-Presentation: 11/25/2025
+<h2>Objective: Create a full-stack web application using MongoDB, Express, React, and Node (MERN).</h2>
 
-Objective: Create a full-stack web application using MongoDB, Express, React, and Node (MERN).
+<h3>Presentation: 11/25/2025</h3>
 
+<hr>
 
 MongoDB:
-- A NoSQL database used to store data in documents.
-- In this application, MongoDB stores tasks and volunteers.
-- Two Mongoose schemas are used in this project: Task.js & Volunteer.js
-- Database seeded with tasksSeed.js and volunteerSeed.js. 
-- Seed the database by running "node seeders/indexSeed.js" in the backend folder. 
+<ul>
+<li>A NoSQL database used to store data in documents.</li>
+<li>In this application, MongoDB stores tasks and volunteers.</li>
+<li>Two Mongoose schemas are used in this project: Task.js & Volunteer.js</li>
+<li>Database seeded with tasksSeed.js and volunteerSeed.js.</li> 
+<li>Seed the database by running "node seeders/indexSeed.js" in the backend folder.</li> 
+</ul>
 
 Express: 
 - Express provides the server framework that makes it easier to build applications within Node.
