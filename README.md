@@ -1,12 +1,11 @@
 <h1>Capstone: Building Maintenance App</h1>
 
-<h2>Objective: Create a full-stack web application using MongoDB, Express, React, and Node (MERN).</h2>
+<h3>Objective: Create a full-stack web application using MongoDB, Express, React, and Node (MERN).</h3>
 
-<h3>Presentation: 11/25/2025</h3>
+<h4>Presentation: 11/25/2025</h4>
 
-<hr>
 
-MongoDB:
+<h5>MongoDB:</h5>
 <ul>
 <li>A NoSQL database used to store data in documents.</li>
 <li>In this application, MongoDB stores tasks and volunteers.</li>
