@@ -4,7 +4,7 @@
 
 <h4>Presentation: 11/25/2025</h4>
 
-
+<hr>
 <strong>MongoDB:</strong>
 <ul>
 <li>A NoSQL database used to store data in documents.</li>
